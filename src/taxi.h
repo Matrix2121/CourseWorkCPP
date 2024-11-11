@@ -6,4 +6,7 @@ class Taxi{
     private:
         Car car;
         Route route;
+
+    public:
+        Taxi(Car, Route);
 };

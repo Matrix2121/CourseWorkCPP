@@ -11,6 +11,7 @@ class Car {
         double fuelConsumption;
     
     public:
+        Car();
         Car(std::string, std::string, int, int, double, double);
 
         void setMake(std::string make);

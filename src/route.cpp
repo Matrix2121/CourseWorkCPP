@@ -1,5 +1,7 @@
 #include "route.h"
 
+Route::Route(){}
+
 Route::Route(int ID, std::vector<std::string> connectingPoints, double length, int repetitions){
     this->ID = ID;
     this->connectingPoints = connectingPoints;

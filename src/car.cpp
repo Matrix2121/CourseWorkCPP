@@ -1,5 +1,7 @@
 #include "car.h"
 
+Car::Car(){}
+
 Car::Car(std::string make, std::string model, int year, int seats, double load_capacity, double fuelConsumption){
     this->make = make;
     this->model = model;

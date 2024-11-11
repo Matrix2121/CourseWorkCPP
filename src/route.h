@@ -10,6 +10,7 @@ class Route{
         int repetitions;
 
     public:
+        Route();
         Route(int, std::vector<std::string>, double, int);
 
         void setId(int);
