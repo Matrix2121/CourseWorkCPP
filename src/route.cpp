@@ -42,7 +42,7 @@ int Route::getRepetitions(){
     return this->repetitions;
 }
 
-std::string Route::toString(){
+std::string Route::toString() const{
     std::stringstream ss;
     ss << std::fixed  << std::setprecision(2);
     ss << this->ID << ", ";
@@ -54,4 +54,18 @@ std::string Route::toString(){
     ss << length << ", " << repetitions;
 
     return ss.str();
+}
+
+bool Route::compare(Route r1) const{
+    if (this->ID != r1.ID){
+        return 0;
+    } else if (this->connectingPoints != r1.connectingPoints){
+        return 0;
+    } else if (this->length != r1.length){
+        return 0;
+    } else if (this->repetitions != r1.repetitions){
+        return 0;
+    } else {
+        return 1;
+    } 
 }

@@ -5,7 +5,7 @@
 class Route{
     private:
         int ID;
-        std::vector<std::string> connectingPoints;
+        mutable std::vector<std::string> connectingPoints;
         double length;
         int repetitions;
 
@@ -25,5 +25,6 @@ class Route{
         void setRepetitions(int);
         int getRepetitions();
 
-        std::string toString();
+        std::string toString() const;
+        bool compare(Route) const;
 };

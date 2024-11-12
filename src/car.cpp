@@ -5,13 +5,22 @@
 
 Car::Car(){}
 
-Car::Car(std::string make, std::string model, int year, int seats, double loadCapacity, double fuelConsumption){
+Car::Car(int ID, std::string make, std::string model, int year, int seats, double loadCapacity, double fuelConsumption){
+    this->ID = ID;
     this->make = make;
     this->model = model;
     this->year = year;
     this->seats = seats;
     this->loadCapacity = loadCapacity;
     this->fuelConsumption  = fuelConsumption;
+}
+
+void Car::setID(int ID){
+    this->ID = ID;
+}
+
+int Car::getID(){
+    return this->ID;
 }
 
 void Car::setMake(std::string make){
@@ -56,8 +65,7 @@ double Car::getFuelConsumption(){
     return this->fuelConsumption;
 }
 
-
-std::string Car::toString(){
+std::string Car::toString() const{
     std::stringstream ss;
     ss << std::fixed << std::setprecision(2);
     ss << this->make << ", " << this->model << ", " << this->year << ", " << this->seats << " seats, " << this->loadCapacity << " kg load capacity, " << this->fuelConsumption << " l/100km";
