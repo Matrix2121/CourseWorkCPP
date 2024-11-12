@@ -1,8 +1,11 @@
 #include "car.h"
+#include <string>
+#include <sstream>
+#include <iomanip>
 
 Car::Car(){}
 
-Car::Car(std::string make, std::string model, int year, int seats, double load_capacity, double fuelConsumption){
+Car::Car(std::string make, std::string model, int year, int seats, double loadCapacity, double fuelConsumption){
     this->make = make;
     this->model = model;
     this->year = year;
@@ -54,3 +57,9 @@ double Car::getFuelConsumption(){
 }
 
 
+std::string Car::toString(){
+    std::stringstream stringStream;
+    stringStream << std::fixed << std::setprecision(2);
+    stringStream << this->make << ", " << this->model << ", " << this->year << ", " << this->seats << " seats, " << this->loadCapacity << " kg load capacity, " << this->fuelConsumption << " l/100km";
+    return stringStream.str();
+}

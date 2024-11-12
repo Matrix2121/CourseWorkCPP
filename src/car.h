@@ -1,7 +1,7 @@
 #pragma once
 #include <string>
 
-class Car {
+class Car{
     private: 
         std::string make;
         std::string model;
@@ -31,4 +31,6 @@ class Car {
 
         void setFuelConsumption(double fuelConsumption);
         double getFuelConsumption();
+
+        std::string toString();
 };
