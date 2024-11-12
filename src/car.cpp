@@ -58,8 +58,8 @@ double Car::getFuelConsumption(){
 
 
 std::string Car::toString(){
-    std::stringstream stringStream;
-    stringStream << std::fixed << std::setprecision(2);
-    stringStream << this->make << ", " << this->model << ", " << this->year << ", " << this->seats << " seats, " << this->loadCapacity << " kg load capacity, " << this->fuelConsumption << " l/100km";
-    return stringStream.str();
+    std::stringstream ss;
+    ss << std::fixed << std::setprecision(2);
+    ss << this->make << ", " << this->model << ", " << this->year << ", " << this->seats << " seats, " << this->loadCapacity << " kg load capacity, " << this->fuelConsumption << " l/100km";
+    return ss.str();
 }

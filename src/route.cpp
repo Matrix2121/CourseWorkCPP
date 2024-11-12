@@ -1,3 +1,5 @@
+#include <sstream>
+#include <iomanip>
 #include "route.h"
 
 Route::Route(){}
@@ -38,4 +40,18 @@ void Route::setRepetitions(int repetitions){
 
 int Route::getRepetitions(){
     return this->repetitions;
+}
+
+std::string Route::toString(){
+    std::stringstream ss;
+    ss << std::fixed  << std::setprecision(2);
+    ss << this->ID << ", ";
+
+    for(std::string& s : this->connectingPoints){
+        ss << s << ", ";
+    }
+
+    ss << length << ", " << repetitions;
+
+    return ss.str();
 }

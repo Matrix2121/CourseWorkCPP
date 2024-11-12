@@ -24,4 +24,6 @@ class Route{
 
         void setRepetitions(int);
         int getRepetitions();
+
+        std::string toString();
 };
