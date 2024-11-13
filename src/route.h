@@ -25,6 +25,6 @@ class Route{
         void setRepetitions(int);
         int getRepetitions();
 
-        std::string toString() const;
-        bool compare(Route) const;
+        std::string toString();
+        bool compare(Route);
 };

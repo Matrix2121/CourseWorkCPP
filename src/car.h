@@ -37,4 +37,5 @@ class Car{
         double getFuelConsumption();
 
         std::string toString() const;
+        bool operator<(const Car&) const;
 };

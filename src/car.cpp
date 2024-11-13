@@ -71,3 +71,9 @@ std::string Car::toString() const{
     ss << this->make << ", " << this->model << ", " << this->year << ", " << this->seats << " seats, " << this->loadCapacity << " kg load capacity, " << this->fuelConsumption << " l/100km";
     return ss.str();
 }
+
+bool Car::operator<(const Car& other) const{
+    if (make != other.make) return make < other.make;
+    if (model != other.model) return model < other.model;
+    return year < other.year;
+}

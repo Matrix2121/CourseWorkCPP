@@ -1,5 +1,9 @@
 #include "manager.h"
 
+std::vector<Car> Manager::storageCars;
+std::set<Route> Manager::storageRoutes;
+std::map<Car, Route> Manager::storagePairs;
+
 void Manager::displayAllPairs(){
     for(auto pair : storagePairs){
         std::cout << "Car: " << pair.first.toString() << "\nRoute: " << pair.second.toString() << std::endl;

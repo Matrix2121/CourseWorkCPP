@@ -10,12 +10,12 @@ class Manager{
         static std::vector<Car> storageCars;
         static std::set<Route> storageRoutes;
         static std::map<Car, Route> storagePairs;
-
+        
     public:
-        void displayAllPairs();
-        void addPair(Car, Route);
-        void removePair(Car);
-        void getPairByCar(Car);
-        void getPairByRoute(Route);
-        void editPair(Car, Car, Route);
+        static void displayAllPairs();
+        static void addPair(Car, Route);
+        static void removePair(Car);
+        static void getPairByCar(Car);
+        static void getPairByRoute(Route);
+        static void editPair(Car, Car, Route);
 };
