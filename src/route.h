@@ -27,6 +27,7 @@ class Route{
         int getRepetitions();
 
         bool operator==(Route&) const;
+        bool operator<(const Route&) const;
 
         friend std::ostream& operator<<(std::ostream&, const Route&);
 };

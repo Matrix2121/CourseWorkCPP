@@ -54,6 +54,10 @@ bool Route::operator==(Route& r1) const{
     return this->ID == r1.ID;
 }
 
+bool Route::operator<(const Route& other) const {
+    return this->ID < other.ID;
+}
+
 std::ostream& operator<<(std::ostream& os, const Route& route){
     os << route.ID << ", {";
     
