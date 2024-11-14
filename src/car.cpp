@@ -57,10 +57,10 @@ int Car::getSeats(){
     return this->seats;
 }
 
-void Car::setLoadCapacity(double loadCapacity){
+void Car::setLoadCapacity(int loadCapacity){
     this->loadCapacity = loadCapacity;
 }
-double Car::getLoadCapacity(){
+int Car::getLoadCapacity(){
     return this->loadCapacity;
 }
 

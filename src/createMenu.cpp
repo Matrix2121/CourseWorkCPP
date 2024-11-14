@@ -1,6 +1,7 @@
 #include "createmenu.h"
 #include "car.h"
 #include "manager.h"
+#include "regex.h"
 
 void createMenu::createCar(){
     std::string createObjectInput;
@@ -14,22 +15,62 @@ void createMenu::createCar(){
     std::cin >> createObjectInput;
     c1.setModel(createObjectInput);
     
-    std::cout << "Enter the car's year: ";
-    std::cin >> createObjectInput;
-    c1.setYear(stoi(createObjectInput));
+    while(true){
+        std::cout << "Enter the car's year (in numbers, between 1886 and 2024): ";
+        std::cin >> createObjectInput;
+
+        if(Regex::yearRegex(createObjectInput)){
+            c1.setYear(stoi(createObjectInput));
+            break;
+        } else if (createObjectInput == "\"STOP\""){
+            return;
+        } else {
+            std::cout << "Invalid input! Try again or type \"STOP\" to abort inputting!";
+        }
+    }
     
-    std::cout << "Enter the car's seats: ";
-    std::cin >> createObjectInput;
-    c1.setSeats(stoi(createObjectInput));
+    while(true){
+        std::cout << "Enter the car's seats (in numbers, up to 99): ";
+        std::cin >> createObjectInput;
+
+        if(Regex::seatsRegex(createObjectInput)){
+            c1.setSeats(stoi(createObjectInput));
+            break;
+        } else if (createObjectInput == "\"STOP\""){
+            return;
+        } else {
+            std::cout << "Invalid input! Try again or type \"STOP\" to abort inputting!";
+        }
+    }
+
+    while(true){
+        std::cout << "Enter the car's load capacity in kg (in numbers, up to 49999): ";
+        std::cin >> createObjectInput;
+
+        if(Regex::loadCapacityRegex(createObjectInput)){
+            c1.setLoadCapacity(stoi(createObjectInput));
+            break;
+        } else if (createObjectInput == "\"STOP\""){
+            return;
+        } else {
+            std::cout << "Invalid input! Try again or type \"STOP\" to abort inputting!";
+        }
+    }
     
-    std::cout << "Enter the car's load capacity: ";
-    std::cin >> createObjectInput;
-    c1.setLoadCapacity(stod(createObjectInput));
-    
-    std::cout << "Enter the car's fuel consumption: ";
-    std::cin >> createObjectInput;
-    c1.setFuelConsumption(stod(createObjectInput));
-    
+    while(true){
+        std::cout << "Enter the car's fuel consumption (l/100km) (in numbers, up to 99.9): ";
+        std::cin >> createObjectInput;
+
+        if(Regex::fuelConsumptionRegex(createObjectInput)){
+            c1.setFuelConsumption(stod(createObjectInput));
+            break;
+        } else if (createObjectInput == "\"STOP\""){
+            return;
+        } else {
+            std::cout << "Invalid input! Try again or type \"STOP\" to abort inputting!";
+        }
+    }
+
     std::cout << std::flush;
 
     Manager::addCar(c1);
@@ -56,13 +97,33 @@ void createMenu::createRoute(){
 
     }
 
-    std::cout << std::endl << "Enter route's length: ";
-    std::cin >> createObjectInput;
-    r1.setLength(stod(createObjectInput));
+    while(true){
+        std::cout << std::endl << "Enter route's length in km (in numbers, up to 999.9): ";
+        std::cin >> createObjectInput;
 
-    std::cout << std::endl << "Enter route's repetitions: ";
-    std::cin >> createObjectInput;
-    r1.setRepetitions(stoi(createObjectInput));
+        if(Regex::seatsRegex(createObjectInput)){
+            r1.setLength(stod(createObjectInput));
+            break;
+        } else if (createObjectInput == "\"STOP\""){
+            return;
+        } else {
+            std::cout << "Invalid input! Try again or type \"STOP\" to abort inputting!";
+        }
+    }
+
+    while(true){
+        std::cout << std::endl << "Enter route's repetitions (in numbers, up to 999): ";
+        std::cin >> createObjectInput;
+
+        if(Regex::seatsRegex(createObjectInput)){
+            r1.setRepetitions(stoi(createObjectInput));
+            break;
+        } else if (createObjectInput == "\"STOP\""){
+            return;
+        } else {
+            std::cout << "Invalid input! Try again or type \"STOP\" to abort inputting!";
+        }
+    }
 
     std::cout << std::flush;
 

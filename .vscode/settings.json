@@ -54,6 +54,9 @@
         "sstream": "cpp",
         "map": "cpp",
         "cstdarg": "cpp",
-        "set": "cpp"
+        "set": "cpp",
+        "bitset": "cpp",
+        "regex": "cpp",
+        "cinttypes": "cpp"
     }
 }

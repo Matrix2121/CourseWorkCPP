@@ -9,7 +9,7 @@ class Car{
         std::string model;
         int year;
         int seats;
-        double loadCapacity;
+        int loadCapacity;
         double fuelConsumption;
     
     public:
@@ -31,8 +31,8 @@ class Car{
         void setSeats(int seats);
         int getSeats();
 
-        void setLoadCapacity(double loadCapacity);
-        double getLoadCapacity();
+        void setLoadCapacity(int loadCapacity);
+        int getLoadCapacity();
 
         void setFuelConsumption(double fuelConsumption);
         double getFuelConsumption();
