@@ -76,7 +76,7 @@ bool Car::operator<(const Car& other) const {
 }
 
 std::ostream& operator<<(std::ostream& os, const Car& car){
-    os << car.ID << ", " << car.make << ", " << car.model << ", " << car.year << ", " 
-    << car.seats << " seats, " << car.loadCapacity << " kg, " << car.fuelConsumption  << " l/100km";
+    os << "[" << car.ID << ", " << car.make << ", " << car.model << ", " << car.year << ", " 
+    << car.seats << " seats, " << car.loadCapacity << " kg, " << car.fuelConsumption  << " l/100km" << "]";
     return os;
 }

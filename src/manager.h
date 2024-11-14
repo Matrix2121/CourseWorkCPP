@@ -7,8 +7,8 @@
 
 class Manager{
     private:
-        static std::vector<Car> storageCars;
-        static std::set<Route> storageRoutes;
+        static std::vector<Car> storageFreeCars;
+        static std::set<Route> storageAllRoutes;
         static std::map<Car, Route> storagePairs;
         
     public:
@@ -26,4 +26,7 @@ class Manager{
         static void addRoute(Route);
         static void editRoute(int); //to-do
         static void removeRoute(int); //to-do
+
+        static void displayFreeCars();
+        static void displayAllRoutes();
 };

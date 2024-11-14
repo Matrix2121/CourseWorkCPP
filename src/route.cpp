@@ -59,7 +59,7 @@ bool Route::operator<(const Route& other) const {
 }
 
 std::ostream& operator<<(std::ostream& os, const Route& route){
-    os << route.ID << ", {";
+    os << "[" << route.ID << ", {";
     
     if(!route.connectingPoints.empty())
     {
@@ -67,7 +67,7 @@ std::ostream& operator<<(std::ostream& os, const Route& route){
         os << route.connectingPoints.back();
     }
 
-    os << "}, " << route.length << "km, " << route.repetitions << " repetitions";
+    os << "}, " << route.length << "km, " << route.repetitions << " repetitions" << "]";
 
     return os;
 }

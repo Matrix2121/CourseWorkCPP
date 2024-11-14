@@ -1,7 +1,7 @@
 #include "manager.h"
 
-std::vector<Car> Manager::storageCars;
-std::set<Route> Manager::storageRoutes;
+std::vector<Car> Manager::storageFreeCars;
+std::set<Route> Manager::storageAllRoutes;
 std::map<Car, Route> Manager::storagePairs;
 
 void Manager::displayAllPairs(){
@@ -36,9 +36,23 @@ void Manager::getPairByRoute(Route r1){
 }
 
 void Manager::addCar(Car c1){
-    storageCars.push_back(c1);
+    storageFreeCars.push_back(c1);
 }
 
 void Manager::addRoute(Route r1){
-    storageRoutes.insert(r1);
+    storageAllRoutes.insert(r1);
+}
+
+void Manager::displayFreeCars(){
+    for(Car c1 : storageFreeCars){
+        std::cout << c1 << "\n";
+    }
+    std::cout << std::flush;
+}
+
+void Manager::displayAllRoutes(){
+    for(Route r1 : storageAllRoutes){
+        std::cout << r1 << "\n";
+    }
+    std::cout << std::flush;
 }
