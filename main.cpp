@@ -1,4 +1,4 @@
-#include "src/menu.h"
+#include "src/mainMenu.h"
 #include "src/manager.h"
 #include <iostream>
 
