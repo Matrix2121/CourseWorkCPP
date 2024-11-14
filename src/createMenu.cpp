@@ -22,7 +22,7 @@ void createMenu::createCar(){
         if(Regex::yearRegex(createObjectInput)){
             c1.setYear(stoi(createObjectInput));
             break;
-        } else if (createObjectInput == "\"STOP\""){
+        } else if (createObjectInput == "STOP"){
             return;
         } else {
             std::cout << "Invalid input! Try again or type \"STOP\" to abort inputting!";
@@ -36,7 +36,7 @@ void createMenu::createCar(){
         if(Regex::seatsRegex(createObjectInput)){
             c1.setSeats(stoi(createObjectInput));
             break;
-        } else if (createObjectInput == "\"STOP\""){
+        } else if (createObjectInput == "STOP"){
             return;
         } else {
             std::cout << "Invalid input! Try again or type \"STOP\" to abort inputting!";
@@ -50,10 +50,10 @@ void createMenu::createCar(){
         if(Regex::loadCapacityRegex(createObjectInput)){
             c1.setLoadCapacity(stoi(createObjectInput));
             break;
-        } else if (createObjectInput == "\"STOP\""){
+        } else if (createObjectInput == "STOP"){
             return;
         } else {
-            std::cout << "Invalid input! Try again or type \"STOP\" to abort inputting!";
+            std::cout << "Invalid input! Try again or type \"STOP\" to abort inputting!\n";
         }
     }
     
@@ -64,7 +64,7 @@ void createMenu::createCar(){
         if(Regex::fuelConsumptionRegex(createObjectInput)){
             c1.setFuelConsumption(stod(createObjectInput));
             break;
-        } else if (createObjectInput == "\"STOP\""){
+        } else if (createObjectInput == "STOP"){
             return;
         } else {
             std::cout << "Invalid input! Try again or type \"STOP\" to abort inputting!";
@@ -72,7 +72,7 @@ void createMenu::createCar(){
     }
 
     std::cout << std::flush;
-
+    c1.IDDeclaration();
     Manager::addCar(c1);
 }
 
@@ -104,7 +104,7 @@ void createMenu::createRoute(){
         if(Regex::seatsRegex(createObjectInput)){
             r1.setLength(stod(createObjectInput));
             break;
-        } else if (createObjectInput == "\"STOP\""){
+        } else if (createObjectInput == "STOP"){
             return;
         } else {
             std::cout << "Invalid input! Try again or type \"STOP\" to abort inputting!";
@@ -118,7 +118,7 @@ void createMenu::createRoute(){
         if(Regex::seatsRegex(createObjectInput)){
             r1.setRepetitions(stoi(createObjectInput));
             break;
-        } else if (createObjectInput == "\"STOP\""){
+        } else if (createObjectInput == "STOP"){
             return;
         } else {
             std::cout << "Invalid input! Try again or type \"STOP\" to abort inputting!";

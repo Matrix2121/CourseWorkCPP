@@ -5,16 +5,18 @@
 
 int Route::counter = 1;
 
-Route::Route(){
-    this->ID = Route::counter;
-    Route::counter++;
-}
+Route::Route(){}
 
 Route::Route(std::vector<std::string> connectingPoints, double length, int repetitions){
     this->ID = counter;
     this->connectingPoints = connectingPoints;
     this->length = length;
     this->repetitions  = repetitions;
+    Route::counter++;
+}
+
+void Route::IDDeclaration(){
+    this->ID = Route::counter;
     Route::counter++;
 }
 

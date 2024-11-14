@@ -6,8 +6,6 @@
 int Car::counter = 1;
 
 Car::Car(){
-    this->ID = Car::counter;
-    Car::counter++;
 }
 
 Car::Car(std::string make, std::string model, int year, int seats, double loadCapacity, double fuelConsumption){
@@ -18,6 +16,11 @@ Car::Car(std::string make, std::string model, int year, int seats, double loadCa
     this->seats = seats;
     this->loadCapacity = loadCapacity;
     this->fuelConsumption  = fuelConsumption;
+    Car::counter++;
+}
+
+void Car::IDDeclaration(){
+    this->ID = Car::counter;
     Car::counter++;
 }
 

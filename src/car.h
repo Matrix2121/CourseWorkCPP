@@ -16,6 +16,8 @@ class Car{
         Car();
         Car(std::string, std::string, int, int, double, double);
 
+        void IDDeclaration();
+
         void setID(int);
         int getID();
 

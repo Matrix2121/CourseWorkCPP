@@ -14,6 +14,8 @@ class Route{
         Route();
         Route(std::vector<std::string>, double, int);
 
+        void IDDeclaration();
+
         void setId(int);
         int getId();
 
