@@ -17,8 +17,8 @@ void Menu::mainMenu(){
         std::cin >> input;
 
         if (std::cin.fail()) {
-            std::cin.clear(); // Изчистване на флага за грешка
-            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Изчистване на буфера
+            std::cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
             std::cout << "Invalid input! Enter a number!" << std::endl;
             continue;
         }
