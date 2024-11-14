@@ -14,6 +14,11 @@ void Manager::addPair(Car c1, Route r1){
     storagePairs.insert({c1, r1});
 }
 
+void Manager::editPair(Car c1, Car c2, Route r2){
+    storagePairs.erase(c1);
+    storagePairs.insert({c2, r2});
+}
+
 void Manager::removePair(Car c1){
     storagePairs.erase(c1);
 }
@@ -30,7 +35,10 @@ void Manager::getPairByRoute(Route r1){
     }
 }
 
-void Manager::editPair(Car c1, Car c2, Route r2){
-    storagePairs.erase(c1);
-    storagePairs.insert({c2, r2});
+void Manager::addCar(Car c1){
+    storageCars.push_back(c1);
+}
+
+void Manager::addRoute(Route r1){
+    storageRoutes.insert(r1);
 }

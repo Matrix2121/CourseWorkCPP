@@ -17,7 +17,7 @@ class Route{
         void setId(int);
         int getId();
 
-        void setConnectingPoints(std::vector<std::string>);
+        void addConnectingPoints(std::string);
         std::vector<std::string> getConnectingPoints();
 
         void setLength(double);

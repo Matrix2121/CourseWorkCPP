@@ -5,13 +5,13 @@
 #include <conio.h> 
 
 void Menu::mainMenu(){
-    int mainInput;
+    int mainMenuInput;
 
     while(true){
 
         std::cout << "\nChoose one of the following (1/2/3/4):\n1. View all information\n2. Create new...\n3. Edit...\n4. Exit" << std::endl;
 
-        std::cin >> mainInput;
+        std::cin >> mainMenuInput;
 
         if (std::cin.fail()) {
             std::cin.clear();
@@ -20,7 +20,7 @@ void Menu::mainMenu(){
             continue;
         }
 
-        switch (mainInput){
+        switch (mainMenuInput){
             case 1: 
                 Menu::displayMenu();
                 break;
@@ -51,11 +51,14 @@ void Menu::displayMenu(){
 }
 
 void Menu::createMenu(){
-    int createInput;
+    int createMenuInput;
+    std::string createObjectInput;
+    Car c1 = Car();
+    Route r1 = Route();
 
     while(true){
         std::cout << "\nChoose what you want to create (1/2):\n1. New Car\n2. New Route\n3. Return to main menu" << std::endl;
-        std::cin >> createInput;
+        std::cin >> createMenuInput;
 
         if (std::cin.fail()) {
             std::cin.clear();
@@ -64,12 +67,65 @@ void Menu::createMenu(){
             continue;
         }
 
-        switch (createInput){
+        switch (createMenuInput){
             case 1:
-                //to-do
+                std::cout << "Enter the car's make: ";
+                std::cin >> createObjectInput;
+                c1.setMake(createObjectInput);
+
+                std::cout << "Enter the car's model: ";
+                std::cin >> createObjectInput;
+                c1.setModel(createObjectInput);
+                
+                std::cout << "Enter the car's year: ";
+                std::cin >> createObjectInput;
+                c1.setYear(stoi(createObjectInput));
+                
+                std::cout << "Enter the car's seats: ";
+                std::cin >> createObjectInput;
+                c1.setSeats(stoi(createObjectInput));
+                
+                std::cout << "Enter the car's load capacity: ";
+                std::cin >> createObjectInput;
+                c1.setLoadCapacity(stod(createObjectInput));
+                
+                std::cout << "Enter the car's fuel consumption: ";
+                std::cin >> createObjectInput;
+                c1.setFuelConsumption(stod(createObjectInput));
+                
+                std::cout << std::flush;
+
+                Manager::addCar(c1);
                 break;
             case 2:
-                //to-do
+                std::cout << "Add connection points or write \"STOP\" to continue";
+                int counter;
+
+                while(true){
+                    counter++;
+
+                    std::cout<< "Connection point #" << counter << ": ";
+                    std::cin >> createObjectInput;
+
+                    if(createObjectInput == "STOP"){
+                        break;
+                    } else {
+                        r1.addConnectingPoints(createObjectInput);
+                    }
+
+                }
+
+                std::cout << std::endl << "Enter route's length: ";
+                std::cin >> createObjectInput;
+                r1.setLength(stod(createObjectInput));
+
+                std::cout << std::endl << "Enter route's repetitions: ";
+                std::cin >> createObjectInput;
+                r1.setRepetitions(stoi(createObjectInput));
+
+                std::cout << std::flush;
+
+                Manager::addRoute(r1);
                 break;
             case 3:
                 return;

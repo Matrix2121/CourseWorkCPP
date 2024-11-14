@@ -26,8 +26,8 @@ int Route::getId(){
     return this->ID;
 }
 
-void Route::setConnectingPoints(std::vector<std::string>  connectingPoints){
-    this->connectingPoints = connectingPoints;
+void Route::addConnectingPoints(std::string s1){
+    this->connectingPoints.push_back(s1);
 }
 std::vector<std::string> Route::getConnectingPoints(){
     return this->connectingPoints;
