@@ -3,16 +3,22 @@
 #include <sstream>
 #include <iomanip>
 
-Car::Car(){}
+int Car::counter = 1;
 
-Car::Car(int ID, std::string make, std::string model, int year, int seats, double loadCapacity, double fuelConsumption){
-    this->ID = ID;
+Car::Car(){
+    this->ID = Car::counter;
+    Car::counter++;
+}
+
+Car::Car(std::string make, std::string model, int year, int seats, double loadCapacity, double fuelConsumption){
+    this->ID = Car::counter;
     this->make = make;
     this->model = model;
     this->year = year;
     this->seats = seats;
     this->loadCapacity = loadCapacity;
     this->fuelConsumption  = fuelConsumption;
+    Car::counter++;
 }
 
 void Car::setID(int ID){
@@ -65,15 +71,12 @@ double Car::getFuelConsumption(){
     return this->fuelConsumption;
 }
 
-std::string Car::toString() const{
-    std::stringstream ss;
-    ss << std::fixed << std::setprecision(2);
-    ss << this->make << ", " << this->model << ", " << this->year << ", " << this->seats << " seats, " << this->loadCapacity << " kg load capacity, " << this->fuelConsumption << " l/100km";
-    return ss.str();
+bool Car::operator<(const Car& other) const {
+    return this->ID < other.ID;
 }
 
-bool Car::operator<(const Car& other) const{
-    if (make != other.make) return make < other.make;
-    if (model != other.model) return model < other.model;
-    return year < other.year;
+std::ostream& operator<<(std::ostream& os, const Car& car){
+    os << car.ID << ", " << car.make << ", " << car.model << ", " << car.year << ", " 
+    << car.seats << " seats, " << car.loadCapacity << " kg, " << car.fuelConsumption  << " l/100km";
+    return os;
 }

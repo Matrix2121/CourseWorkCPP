@@ -4,6 +4,7 @@
 
 class Route{
     private:
+        static int counter;
         int ID;
         mutable std::vector<std::string> connectingPoints;
         double length;
@@ -11,7 +12,7 @@ class Route{
 
     public:
         Route();
-        Route(int, std::vector<std::string>, double, int);
+        Route(std::vector<std::string>, double, int);
 
         void setId(int);
         int getId();
@@ -25,6 +26,7 @@ class Route{
         void setRepetitions(int);
         int getRepetitions();
 
-        std::string toString();
-        bool compare(Route);
+        bool operator==(Route&) const;
+
+        friend std::ostream& operator<<(std::ostream&, const Route&);
 };

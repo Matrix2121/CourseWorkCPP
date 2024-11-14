@@ -3,6 +3,7 @@
 
 class Car{
     private: 
+        static int counter;
         int ID;
         std::string make;
         std::string model;
@@ -13,7 +14,7 @@ class Car{
     
     public:
         Car();
-        Car(int, std::string, std::string, int, int, double, double);
+        Car(std::string, std::string, int, int, double, double);
 
         void setID(int);
         int getID();
@@ -36,6 +37,7 @@ class Car{
         void setFuelConsumption(double fuelConsumption);
         double getFuelConsumption();
 
-        std::string toString() const;
         bool operator<(const Car&) const;
+
+        friend std::ostream& operator<<(std::ostream&, const Car&);
 };

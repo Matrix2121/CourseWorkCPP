@@ -1,14 +1,21 @@
 #include <sstream>
 #include <iomanip>
+#include <iterator>
 #include "route.h"
 
-Route::Route(){}
+int Route::counter = 1;
 
-Route::Route(int ID, std::vector<std::string> connectingPoints, double length, int repetitions){
-    this->ID = ID;
+Route::Route(){
+    this->ID = Route::counter;
+    Route::counter++;
+}
+
+Route::Route(std::vector<std::string> connectingPoints, double length, int repetitions){
+    this->ID = counter;
     this->connectingPoints = connectingPoints;
     this->length = length;
     this->repetitions  = repetitions;
+    Route::counter++;
 }
 
 void Route::setId(int id){
@@ -42,30 +49,21 @@ int Route::getRepetitions(){
     return this->repetitions;
 }
 
-std::string Route::toString(){
-    std::stringstream ss;
-    ss << std::fixed  << std::setprecision(2);
-    ss << this->ID << ", ";
 
-    for(std::string& s : this->connectingPoints){
-        ss << s << ", ";
-    }
-
-    ss << length << ", " << repetitions;
-
-    return ss.str();
+bool Route::operator==(Route& r1) const{
+    return this->ID == r1.ID;
 }
 
-bool Route::compare(Route r1){
-    if (this->ID != r1.ID){
-        return 0;
-    } else if (this->connectingPoints != r1.connectingPoints){
-        return 0;
-    } else if (this->length != r1.length){
-        return 0;
-    } else if (this->repetitions != r1.repetitions){
-        return 0;
-    } else {
-        return 1;
-    } 
+std::ostream& operator<<(std::ostream& os, const Route& route){
+    os << route.ID << ", {";
+    
+    if(!route.connectingPoints.empty())
+    {
+        std::copy(route.connectingPoints.begin(), route.connectingPoints.end()-1, std::ostream_iterator<std::string>(os, ", "));
+        os << route.connectingPoints.back();
+    }
+
+    os << "}, " << route.length << "km, " << route.repetitions << " repetitions";
+
+    return os;
 }
