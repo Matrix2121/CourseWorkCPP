@@ -2,6 +2,8 @@
 
 class Regex{
     public:
+        static bool IDRegex(std::string);
+
         static bool yearRegex(std::string);
         static bool seatsRegex(std::string);
         static bool loadCapacityRegex(std::string);

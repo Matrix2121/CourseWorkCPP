@@ -14,12 +14,12 @@ class Car{
     
     public:
         Car();
-        Car(std::string, std::string, int, int, double, double);
+        Car(int, std::string, std::string, int, int, double, double);
 
         void IDDeclaration();
 
         void setID(int);
-        int getID();
+        int getID() const;
 
         void setMake(std::string make);
         std::string getMake();

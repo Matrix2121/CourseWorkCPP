@@ -5,7 +5,9 @@
 
 int Route::counter = 1;
 
-Route::Route(){}
+Route::Route(){
+    this->ID = -1;
+}
 
 Route::Route(std::vector<std::string> connectingPoints, double length, int repetitions){
     this->ID = counter;
@@ -20,11 +22,11 @@ void Route::IDDeclaration(){
     Route::counter++;
 }
 
-void Route::setId(int id){
+void Route::setID(int id){
     this->ID = id;    
 }
 
-int Route::getId(){
+int Route::getID() const{
     return this->ID;
 }
 

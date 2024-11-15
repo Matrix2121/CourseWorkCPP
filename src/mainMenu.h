@@ -6,7 +6,8 @@ class Menu{
         static void mainMenu();
         static void displayMenu();
         static void createMenu();
-        static void assignMenu();
-        static void editMenu();
+        static void assignMenu(); //to-do
+        static void editMenu(); //to-do
+        static void deleteMenu(); //to-do
     
 };

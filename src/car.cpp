@@ -6,9 +6,10 @@
 int Car::counter = 1;
 
 Car::Car(){
+    this->ID = -1;
 }
 
-Car::Car(std::string make, std::string model, int year, int seats, double loadCapacity, double fuelConsumption){
+Car::Car(int ID, std::string make, std::string model, int year, int seats, double loadCapacity, double fuelConsumption){
     this->ID = Car::counter;
     this->make = make;
     this->model = model;
@@ -28,7 +29,7 @@ void Car::setID(int ID){
     this->ID = ID;
 }
 
-int Car::getID(){
+int Car::getID() const{
     return this->ID;
 }
 
@@ -83,3 +84,5 @@ std::ostream& operator<<(std::ostream& os, const Car& car){
     << car.seats << " seats, " << car.loadCapacity << " kg, " << car.fuelConsumption  << " l/100km" << "]";
     return os;
 }
+
+

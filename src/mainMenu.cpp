@@ -2,6 +2,7 @@
 #include "manager.h"
 #include "createMenu.h"
 #include "displayMenu.h"
+#include "assignMenu.h"
 #include <iostream>
 #include <limits>
 #include <conio.h> 
@@ -11,7 +12,7 @@ void Menu::mainMenu(){
 
     while(true){
 
-        std::cout << "\nChoose one of the following (1/2/3/4):\n1. View all information\n2. Create new...\n3. Edit...\n4. Exit" << std::endl;
+        std::cout << "\nChoose one of the following (1/2/3/4/5):\n1. View information\n2. Create new...\n3. Make new pair\n4. Edit...\n5. Exit" << std::endl;
 
         std::cin >> mainMenuInput;
 
@@ -30,9 +31,12 @@ void Menu::mainMenu(){
                 Menu::createMenu();
                 break;
             case 3:
-                Menu::editMenu();
+                Menu::assignMenu();
                 break;
             case 4:
+                Menu::editMenu();
+                break;
+            case 5:
                 return;
             default:
                 std::cout << "Invalid input! Enter a number between 1 and 4!" << std::endl;
@@ -110,9 +114,13 @@ void Menu::createMenu(){
 }
 
 void Menu::assignMenu(){
-    
+    assignMenu::assign();
 }
 
 void Menu::editMenu(){
+
+}
+
+void Menu::deleteMenu(){
 
 }

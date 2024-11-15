@@ -80,7 +80,7 @@ void createMenu::createRoute(){
     std::string createObjectInput;
     Route r1 = Route();
 
-    std::cout << "Add connection points or write \"STOP\" to continue";
+    std::cout << "Add connection points or write \"STOP\" to continue\n";
     int counter;
 
     while(true){
@@ -126,6 +126,6 @@ void createMenu::createRoute(){
     }
 
     std::cout << std::flush;
-
+    r1.IDDeclaration();
     Manager::addRoute(r1);
 }
