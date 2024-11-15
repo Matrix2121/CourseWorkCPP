@@ -4,6 +4,7 @@ int Route::counter = 1;
 
 Route::Route(){
     this->ID = -1;
+    this->carsOnRoute = 0;
 }
 
 Route::Route(std::vector<std::string> connectingPoints, double length, int repetitions){
@@ -11,6 +12,7 @@ Route::Route(std::vector<std::string> connectingPoints, double length, int repet
     this->connectingPoints = connectingPoints;
     this->length = length;
     this->repetitions  = repetitions;
+    this->carsOnRoute = 0;
     Route::counter++;
 }
 
@@ -22,13 +24,15 @@ void Route::IDDeclaration(){
 void Route::setID(int id){
     this->ID = id;    
 }
-
 int Route::getID() const{
     return this->ID;
 }
 
 void Route::addConnectingPoints(std::string s1){
     this->connectingPoints.push_back(s1);
+}
+void Route::clearConnectionPoints(){
+    this->connectingPoints.clear();
 }
 std::vector<std::string> Route::getConnectingPoints(){
     return this->connectingPoints;
@@ -37,7 +41,6 @@ std::vector<std::string> Route::getConnectingPoints(){
 void Route::setLength(double length){
     this->length = length; 
 }
-
 double Route::getLength(){
     return this->length;
 }
@@ -45,18 +48,23 @@ double Route::getLength(){
 void Route::setRepetitions(int repetitions){
     this->repetitions = repetitions; 
 }
-
 int Route::getRepetitions(){
     return this->repetitions;
 }
 
-
-bool Route::operator==(Route& r1) const{
-    return this->ID == r1.ID;
+void Route::addCarOnRoute(){
+    this->carsOnRoute++;
+}
+int Route::getCarsOnRoute(){
+    return this->carsOnRoute;
 }
 
 bool Route::operator<(const Route& other) const {
     return this->ID < other.ID;
+}
+
+bool Route::operator==(Route& r1) const{
+    return this->ID == r1.ID;
 }
 
 std::ostream& operator<<(std::ostream& os, const Route& route){
@@ -68,7 +76,7 @@ std::ostream& operator<<(std::ostream& os, const Route& route){
         os << route.connectingPoints.back();
     }
 
-    os << "}, " << route.length << "km, " << route.repetitions << " repetitions" << "]";
+    os << "}, " << route.length << "km, " << route.repetitions << " repetitions, " << route.carsOnRoute << " cars]";
 
     return os;
 }

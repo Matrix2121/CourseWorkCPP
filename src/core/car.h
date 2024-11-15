@@ -13,6 +13,7 @@ class Car{
         int seats;
         int loadCapacity;
         double fuelConsumption;
+        std::string status;
     
     public:
         Car();
@@ -41,7 +42,11 @@ class Car{
         void setFuelConsumption(double fuelConsumption);
         double getFuelConsumption();
 
+        void setStatus(std::string);
+        std::string getStatus();
+
         bool operator<(const Car&) const;
+        bool operator==(const Car&) const;
 
         friend std::ostream& operator<<(std::ostream&, const Car&);
 };

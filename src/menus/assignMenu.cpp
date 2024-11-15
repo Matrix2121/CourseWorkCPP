@@ -6,7 +6,7 @@ void AssignMenu::assign(){
     Car c1;
     Route r1;
 
-    DisplayMenu::displayFreeCars();
+    DisplayMenu::displayAllCars();
     while(true){
         std::cout << "Select which car you want to assign (by ID): ";
         std::cin >> assignInput;
@@ -50,9 +50,25 @@ void AssignMenu::assign(){
         }
     }
 
-    Manager::addPair(c1, r1);
+    double consumption = r1.getLength() * r1.getRepetitions() * c1.getFuelConsumption() / 100;
 
-    Manager::removeCar(carID);
-    std::cout << "flag3";
+    std::cout << "The fuel needed for this route is: " << consumption << "!\nDo you want to assign" << c1 << "\nto\n" << r1 << "?(y/n) ";
 
+    while(true){
+        std::cin >> assignInput;
+
+        if(assignInput == "y"){
+            Manager::takeCar(carID);
+            Manager::addPair(c1, r1);
+            Manager::addCarToRoute(routeID);
+            std::cout << std::flush;
+            return;
+        } else if(assignInput == "n"){
+            std::cout << "The operaation was aborted!";
+            std::cout << std::flush;
+            return;
+        } else {
+            std::cout << "Invalid input! Try again: ";
+        }
+    }
 }

@@ -3,7 +3,7 @@
 
 class DisplayMenu{
     public:
-        static void displayFreeCars();
+        static void displayAllCars();
         static void displayAllRoutes();
         static void displayAllPairs();
 

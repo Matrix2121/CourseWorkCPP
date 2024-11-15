@@ -4,6 +4,7 @@ int Car::counter = 1;
 
 Car::Car(){
     this->ID = -1;
+    this->status = "Untaken";
 }
 
 Car::Car(int ID, std::string make, std::string model, int year, int seats, double loadCapacity, double fuelConsumption){
@@ -14,6 +15,7 @@ Car::Car(int ID, std::string make, std::string model, int year, int seats, doubl
     this->seats = seats;
     this->loadCapacity = loadCapacity;
     this->fuelConsumption  = fuelConsumption;
+    this->status = "Untaken";
     Car::counter++;
 }
 
@@ -72,13 +74,24 @@ double Car::getFuelConsumption(){
     return this->fuelConsumption;
 }
 
+void Car::setStatus(std::string taken){
+    this->status = status;
+}
+std::string Car::getStatus(){
+    return this->status;
+}
+
 bool Car::operator<(const Car& other) const {
     return this->ID < other.ID;
 }
 
+bool Car::operator==(const Car& other) const {
+    return this->ID == other.ID;
+}
+
 std::ostream& operator<<(std::ostream& os, const Car& car){
     os << "[" << car.ID << ", " << car.make << ", " << car.model << ", " << car.year << ", " 
-    << car.seats << " seats, " << car.loadCapacity << " kg, " << car.fuelConsumption  << " l/100km" << "]";
+    << car.seats << " seats, " << car.loadCapacity << " kg, " << car.fuelConsumption  << " l/100km, " << car.status << "]";
     return os;
 }
 

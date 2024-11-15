@@ -8,12 +8,12 @@
 
 class Manager{
     private:
-        static std::vector<Car> storageFreeCars;
+        static std::vector<Car> storageAllCars;
         static std::set<Route> storageAllRoutes;
         static std::map<Car, Route> storageAllPairs;
         
     public:
-        static void displayFreeCars();
+        static void displayAllCars();
         static void displayAllRoutes();
         static void displayAllPairs();
 
@@ -22,10 +22,16 @@ class Manager{
 
         static Car findCar(int);
         static Route findRoute(int);
+
+        static void takeCar(int);
+        static void untakeCar(int); //to-do
+        static void addCarToRoute(int);
+        static void removeCarFromRoute(int); //to-do
+
         static void addPair(Car, Route);
 
-
-
+        static void editCar(Car, Car);
+        static void editRoute(Route, Route); //to-do
 
 
         static void editPair(Car, Car, Route); //rework
@@ -34,12 +40,14 @@ class Manager{
         static void getPairByRoute(Route); //rework
 
         
-        static void editCar(int); //to-do
+        
         static void removeCar(int); //to-do
 
         
-        static void editRoute(int); //to-do
+        
         static void removeRoute(int); //to-do
+
+
 
         
 };

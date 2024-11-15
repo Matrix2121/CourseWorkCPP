@@ -5,14 +5,14 @@ void MainMenu::mainMenu(){
 
     while(true){
 
-        std::cout << "\nChoose one of the following (1/2/3/4/5):\n1. View information\n2. Create new...\n3. Make new pair\n4. Edit...\n5. Exit" << std::endl;
+        std::cout << "\nChoose one of the following (1/2/3/4/5/6):\n1. View information\n2. Create new...\n3. Make new pair\n4. Edit...\n5. Delete...\n6. Exit" << std::endl;
 
         std::cin >> mainMenuInput;
 
         if (std::cin.fail()) {
             std::cin.clear();
             std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-            std::cout << "Invalid input! Enter a number between 1 and 4!" << std::endl;
+            std::cout << "Invalid input! Enter a number between 1 and 6!" << std::endl;
             continue;
         }
 
@@ -30,13 +30,12 @@ void MainMenu::mainMenu(){
                 MainMenu::editMenu();
                 break;
             case 5:
-                return;
+                MainMenu::deleteMenu();
+                break;
             case 6:
-                
-            case 7:
                 return;
             default:
-                std::cout << "Invalid input! Enter a number between 1 and 4!" << std::endl;
+                std::cout << "Invalid input! Enter a number between 1 and 6!" << std::endl;
 
         }
     }
@@ -47,7 +46,7 @@ void MainMenu::displayMenu(){
 
     while(true){
 
-        std::cout << "\nChoose one of the following (1/2/3/4):\n1. Display free cars\n2. Display all routes\n3. Display all pairs\n4. Return to main  menu" << std::endl;
+        std::cout << "\nChoose one of the following (1/2/3/4):\n1. Display free cars\n2. Display all routes\n3. Display all pairs\n4. Return to main menu" << std::endl;
 
         std::cin >> displayMenuInput;
 
@@ -60,7 +59,7 @@ void MainMenu::displayMenu(){
 
         switch (displayMenuInput){
             case 1: 
-                DisplayMenu::displayFreeCars();
+                DisplayMenu::displayAllCars();
                 break;
             case 2:
                 DisplayMenu::displayAllRoutes();
@@ -81,12 +80,11 @@ void MainMenu::displayMenu(){
 }
 
 void MainMenu::createMenu(){
-    int createMainMenuInput;
+    int createMenuInput;
     
-
     while(true){
-        std::cout << "\nChoose what you want to create (1/2):\n1. New Car\n2. New Route\n3. Return to main MainMenu" << std::endl;
-        std::cin >> createMainMenuInput;
+        std::cout << "\nChoose what you want to create (1/2):\n1. New Car\n2. New Route\n3. Return to main main menu" << std::endl;
+        std::cin >> createMenuInput;
 
         if (std::cin.fail()) {
             std::cin.clear();
@@ -95,7 +93,7 @@ void MainMenu::createMenu(){
             continue;
         }
 
-        switch (createMainMenuInput){
+        switch (createMenuInput){
             case 1:
                 CreateMenu::createCar();
                 break;
@@ -115,7 +113,32 @@ void MainMenu::assignMenu(){
 }
 
 void MainMenu::editMenu(){
+    int editMenuInput;
+    
+    while(true){
+        std::cout << "\nChoose what you want to create (1/2/3):\n1. Edit car\n2. Edit Route\n3. Return to main main menu" << std::endl;
+        std::cin >> editMenuInput;
 
+        if (std::cin.fail()) {
+            std::cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            std::cout << "Invalid input! Enter a number between 1 and 3!" << std::endl;
+            continue;
+        }
+
+        switch (editMenuInput){
+            case 1:
+                EditMenu::editCar();
+                break;
+            case 2:
+                EditMenu::editRoute();
+                break;
+            case 3:
+                return;
+            default:
+                std::cout << "Invalid input! Enter a number between 1 and 3!" << std::endl;
+        }
+    }
 }
 
 void MainMenu::deleteMenu(){

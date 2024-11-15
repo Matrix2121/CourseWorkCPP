@@ -5,6 +5,7 @@
 #include "createMenu.h"
 #include "displayMenu.h"
 #include "assignMenu.h"
+#include "editMenu.h"
 #include "../manager.h"
 
 class MainMenu{
@@ -13,7 +14,7 @@ class MainMenu{
         static void displayMenu();
         static void createMenu();
         static void assignMenu();
-        static void editMenu(); //to-do
+        static void editMenu();
         static void deleteMenu(); //to-do
     
 };

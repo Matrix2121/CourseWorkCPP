@@ -1,8 +1,8 @@
 #include "displayMenu.h"
 
-void DisplayMenu::displayFreeCars(){
+void DisplayMenu::displayAllCars(){
     std::cout << "\n";
-    Manager::displayFreeCars();
+    Manager::displayAllCars();
 }
 
 void DisplayMenu::displayAllRoutes(){

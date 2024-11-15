@@ -50,7 +50,7 @@ bool Regex::fuelConsumptionRegex(std::string str){
     }
 }
 
-bool lengthRegex(std::string str){
+bool Regex::lengthRegex(std::string str){
     std::regex lengthRegex(R"(\b\d{1,3}(\.\d+)?\b)");
 
     if (std::regex_match(str, lengthRegex)) {
@@ -60,7 +60,7 @@ bool lengthRegex(std::string str){
     }
 }
 
-bool repetitionsRegex(std::string str){
+bool Regex::repetitionsRegex(std::string str){
     std::regex repetitionsRegex(R"(\b\d{1,3}\b)");
 
     if (std::regex_match(str, repetitionsRegex)) {
