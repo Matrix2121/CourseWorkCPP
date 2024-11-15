@@ -1,5 +1,5 @@
 #pragma once
-#include <iostream>
+#include "../manager.h"
 
 class displayMenu{
     public:

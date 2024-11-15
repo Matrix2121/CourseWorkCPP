@@ -1,7 +1,4 @@
 #include "createmenu.h"
-#include "car.h"
-#include "manager.h"
-#include "regex.h"
 
 void createMenu::createCar(){
     std::string createObjectInput;

@@ -1,6 +1,5 @@
-#include "src/mainMenu.h"
 #include "src/manager.h"
-#include <iostream>
+#include "src/menus/mainMenu.h"
 
 int main(){
     Menu::mainMenu();

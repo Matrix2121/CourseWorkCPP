@@ -1,6 +1,3 @@
-#include <sstream>
-#include <iomanip>
-#include <iterator>
 #include "route.h"
 
 int Route::counter = 1;

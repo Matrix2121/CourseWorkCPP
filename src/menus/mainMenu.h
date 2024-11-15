@@ -1,5 +1,11 @@
 #pragma once
+#include <limits>
+#include <conio.h> 
 #include <string>
+#include "createMenu.h"
+#include "displayMenu.h"
+#include "assignMenu.h"
+#include "../manager.h"
 
 class Menu{
     public:

@@ -1,7 +1,4 @@
 #include "car.h"
-#include <string>
-#include <sstream>
-#include <iomanip>
 
 int Car::counter = 1;
 
