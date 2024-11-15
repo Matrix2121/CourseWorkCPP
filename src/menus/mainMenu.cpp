@@ -1,6 +1,6 @@
 #include "mainMenu.h"
 
-void Menu::mainMenu(){
+void MainMenu::mainMenu(){
     int mainMenuInput;
 
     while(true){
@@ -18,18 +18,22 @@ void Menu::mainMenu(){
 
         switch (mainMenuInput){
             case 1: 
-                Menu::displayMenu();
+                MainMenu::displayMenu();
                 break;
             case 2:
-                Menu::createMenu();
+                MainMenu::createMenu();
                 break;
             case 3:
-                Menu::assignMenu();
+                MainMenu::assignMenu();
                 break;
             case 4:
-                Menu::editMenu();
+                MainMenu::editMenu();
                 break;
             case 5:
+                return;
+            case 6:
+                
+            case 7:
                 return;
             default:
                 std::cout << "Invalid input! Enter a number between 1 and 4!" << std::endl;
@@ -38,7 +42,7 @@ void Menu::mainMenu(){
     }
 }
 
-void Menu::displayMenu(){
+void MainMenu::displayMenu(){
     int displayMenuInput;
 
     while(true){
@@ -56,13 +60,13 @@ void Menu::displayMenu(){
 
         switch (displayMenuInput){
             case 1: 
-                displayMenu::displayFreeCars();
+                DisplayMenu::displayFreeCars();
                 break;
             case 2:
-                displayMenu::displayAllRoutes();
+                DisplayMenu::displayAllRoutes();
                 break;
             case 3:
-                displayMenu::displayAllPairs();
+                DisplayMenu::displayAllPairs();
                 break;
             case 4:
                 return;
@@ -72,17 +76,17 @@ void Menu::displayMenu(){
         }
     }
 
-    std::cout << "\nPress any key to get back to main menu.\n\n";
+    std::cout << "\nPress any key to get back to main MainMenu.\n\n";
     getch();
 }
 
-void Menu::createMenu(){
-    int createMenuInput;
+void MainMenu::createMenu(){
+    int createMainMenuInput;
     
 
     while(true){
-        std::cout << "\nChoose what you want to create (1/2):\n1. New Car\n2. New Route\n3. Return to main menu" << std::endl;
-        std::cin >> createMenuInput;
+        std::cout << "\nChoose what you want to create (1/2):\n1. New Car\n2. New Route\n3. Return to main MainMenu" << std::endl;
+        std::cin >> createMainMenuInput;
 
         if (std::cin.fail()) {
             std::cin.clear();
@@ -91,12 +95,12 @@ void Menu::createMenu(){
             continue;
         }
 
-        switch (createMenuInput){
+        switch (createMainMenuInput){
             case 1:
-                createMenu::createCar();
+                CreateMenu::createCar();
                 break;
             case 2:
-                createMenu::createRoute();
+                CreateMenu::createRoute();
                 break;
             case 3:
                 return;
@@ -106,14 +110,14 @@ void Menu::createMenu(){
     }
 }
 
-void Menu::assignMenu(){
-    assignMenu::assign();
+void MainMenu::assignMenu(){
+    AssignMenu::assign();
 }
 
-void Menu::editMenu(){
+void MainMenu::editMenu(){
 
 }
 
-void Menu::deleteMenu(){
+void MainMenu::deleteMenu(){
 
 }

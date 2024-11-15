@@ -1,12 +1,12 @@
 #include "assignMenu.h"
 
-void assignMenu::assign(){
+void AssignMenu::assign(){
     int carID, routeID;
     std::string assignInput;
     Car c1;
     Route r1;
 
-    displayMenu::displayFreeCars();
+    DisplayMenu::displayFreeCars();
     while(true){
         std::cout << "Select which car you want to assign (by ID): ";
         std::cin >> assignInput;
@@ -28,7 +28,7 @@ void assignMenu::assign(){
         }
     }
     
-    displayMenu::displayAllRoutes();
+    DisplayMenu::displayAllRoutes();
     while(true){
         std::cout << "Select which route you want to assign to that car (by ID): ";
         std::cin >> assignInput;

@@ -1,6 +1,6 @@
 #include "createmenu.h"
 
-void createMenu::createCar(){
+void CreateMenu::createCar(){
     std::string createObjectInput;
     Car c1 = Car();
 
@@ -73,7 +73,7 @@ void createMenu::createCar(){
     Manager::addCar(c1);
 }
 
-void createMenu::createRoute(){
+void CreateMenu::createRoute(){
     std::string createObjectInput;
     Route r1 = Route();
 

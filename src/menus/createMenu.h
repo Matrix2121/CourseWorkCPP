@@ -1,7 +1,7 @@
 #pragma once
 #include "../manager.h"
 
-class createMenu{
+class CreateMenu{
     public:
         static void createCar();
         static void createRoute();

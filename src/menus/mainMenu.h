@@ -7,12 +7,12 @@
 #include "assignMenu.h"
 #include "../manager.h"
 
-class Menu{
+class MainMenu{
     public:
         static void mainMenu();
         static void displayMenu();
         static void createMenu();
-        static void assignMenu(); //to-do
+        static void assignMenu();
         static void editMenu(); //to-do
         static void deleteMenu(); //to-do
     

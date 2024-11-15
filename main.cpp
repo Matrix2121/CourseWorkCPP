@@ -2,5 +2,5 @@
 #include "src/menus/mainMenu.h"
 
 int main(){
-    Menu::mainMenu();
+    MainMenu::mainMenu();
 }

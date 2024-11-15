@@ -1,7 +1,7 @@
 #pragma once
 #include "../manager.h"
 
-class displayMenu{
+class DisplayMenu{
     public:
         static void displayFreeCars();
         static void displayAllRoutes();

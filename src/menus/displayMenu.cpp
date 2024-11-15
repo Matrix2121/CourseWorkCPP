@@ -1,16 +1,16 @@
 #include "displayMenu.h"
 
-void displayMenu::displayFreeCars(){
+void DisplayMenu::displayFreeCars(){
     std::cout << "\n";
     Manager::displayFreeCars();
 }
 
-void displayMenu::displayAllRoutes(){
+void DisplayMenu::displayAllRoutes(){
     std::cout << "\n";
     Manager::displayAllRoutes();
 }
 
-void displayMenu::displayAllPairs(){
+void DisplayMenu::displayAllPairs(){
     std::cout << "\n";
     Manager::displayAllPairs();
 }
