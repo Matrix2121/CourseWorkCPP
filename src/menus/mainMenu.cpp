@@ -5,7 +5,7 @@ void MainMenu::mainMenu(){
 
     while(true){
 
-        std::cout << "\nChoose one of the following (1/2/3/4/5/6):\n1. View information\n2. Create new...\n3. Make new pair\n4. Edit...\n5. Delete...\n6. Exit" << std::endl;
+        std::cout << "\nChoose one of the following (1/2/3/4/5/6/7):\n1. View information\n2. Create new...\n3. Assign new pair\n4. Unassign a pair\n5. Edit...\n6. Delete...\n7. Exit" << std::endl;
 
         std::cin >> mainMenuInput;
 
@@ -27,12 +27,15 @@ void MainMenu::mainMenu(){
                 MainMenu::assignMenu();
                 break;
             case 4:
-                MainMenu::editMenu();
+                MainMenu::unAssignMenu();
                 break;
             case 5:
-                MainMenu::deleteMenu();
+                MainMenu::editMenu();
                 break;
             case 6:
+                MainMenu::deleteMenu();
+                break;
+            case 7:
                 return;
             default:
                 std::cout << "Invalid input! Enter a number between 1 and 6!" << std::endl;
@@ -112,6 +115,10 @@ void MainMenu::assignMenu(){
     AssignMenu::assign();
 }
 
+void MainMenu::unAssignMenu(){
+    UnassignMenu::unassign();
+}
+
 void MainMenu::editMenu(){
     int editMenuInput;
     
@@ -142,5 +149,30 @@ void MainMenu::editMenu(){
 }
 
 void MainMenu::deleteMenu(){
+    int editMenuInput;
+    
+    while(true){
+        std::cout << "\nChoose what you want to create (1/2/3):\n1. Delete car\n2. Delete Route\n3. Return to main main menu" << std::endl;
+        std::cin >> editMenuInput;
 
+        if (std::cin.fail()) {
+            std::cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            std::cout << "Invalid input! Enter a number between 1 and 3!" << std::endl;
+            continue;
+        }
+
+        switch (editMenuInput){
+            case 1:
+                DeleteMenu::deleteCar();
+                break;
+            case 2:
+                DeleteMenu::deleteRoute();
+                break;
+            case 3:
+                return;
+            default:
+                std::cout << "Invalid input! Enter a number between 1 and 3!" << std::endl;
+        }
+    }
 }

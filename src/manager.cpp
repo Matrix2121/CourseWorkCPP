@@ -63,16 +63,37 @@ void Manager::takeCar(int ID){
     }
 }
 
-void Manager::addCarToRoute(int ID){
-    for(Route r1 : storageAllRoutes){
-        if(r1.getID() == ID){
-            r1.addCarOnRoute();
+void Manager::untakeCar(int ID){
+    for(Car& c1 : storageAllCars){
+        if(c1.getID() == ID){
+            c1.setStatus("Untaken");
         }
     }
 }
 
-void Manager::addPair(Car c1, Route r1){  
+void Manager::addCarToRoute(int ID){
+    for(Route r1 : storageAllRoutes){
+        if(r1.getID() == ID){
+            r1.addCarToRoute();
+        }
+    }
+}
+
+void Manager::removeCarFromRoute(int ID){
+    for(Route r1 : storageAllRoutes){
+        if(r1.getID() == ID){
+            r1.removeCarFromRoute();
+        }
+    }
+}
+
+void Manager::assignPair(Car c1, Route r1){  
     storageAllPairs.insert({c1, r1});
+}
+
+
+void Manager::unassignPair(int carID){
+    storageAllPairs.erase(Manager::findCar(carID));
 }
 
 
@@ -119,35 +140,28 @@ void Manager::editRoute(Route oldRoute, Route newRoute){
 }
 
 
+void Manager::deleteCar(int carID){
+    Car c1 = Manager::findCar(carID);
 
+    for(auto pair : storageAllPairs){
+        if(pair.first == c1){
+            storageAllPairs.erase(pair.first);
+            break;
+        }
+    }
 
-void Manager::editPair(Car c1, Car c2, Route r2){
     storageAllPairs.erase(c1);
-    storageAllPairs.insert({c2, r2});
 }
 
-void Manager::removePair(Car c1){
-    storageAllPairs.erase(c1);
-}
+void Manager::deleteRoute(int routeID){
+    Route r1 = Manager::findRoute(routeID);
 
-void Manager::getPairByCar(Car c1){
-    std::cout << "Car: " << c1 << "\nRoute: " << storageAllPairs.at(c1);
-}
+    storageAllRoutes.erase(r1);
 
-void Manager::getPairByRoute(Route r1){
     for(auto pair : storageAllPairs){
         if(pair.second == r1){
-             std::cout << "Car: " << pair.first << "\nRoute: " << pair.second << std::endl;
+            storageAllPairs.erase(pair.first);
+            break;
         }
     }
 }
-
-void Manager::removeCar(int ID){
-    for (auto it = storageAllCars.begin(); it != storageAllCars.end(); it++) {
-        if (it->getID() == ID) {
-            it = storageAllCars.erase(it);
-            return;
-        }
-    }
-}
-

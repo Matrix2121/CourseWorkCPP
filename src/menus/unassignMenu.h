@@ -2,7 +2,7 @@
 #include "displayMenu.h"
 #include "../manager.h"
 
-class AssignMenu {
+class UnassignMenu{
     public:
-        static void assign();
+        static void unassign();
 };

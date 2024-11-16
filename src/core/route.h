@@ -33,7 +33,8 @@ class Route{
         void setRepetitions(int);
         int getRepetitions();
 
-        void addCarOnRoute();
+        void addCarToRoute();
+        void removeCarFromRoute();
         int getCarsOnRoute();
 
         bool operator==(Route&) const;

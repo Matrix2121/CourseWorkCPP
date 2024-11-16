@@ -24,30 +24,17 @@ class Manager{
         static Route findRoute(int);
 
         static void takeCar(int);
-        static void untakeCar(int); //to-do
+        static void untakeCar(int);
         static void addCarToRoute(int);
-        static void removeCarFromRoute(int); //to-do
+        static void removeCarFromRoute(int);
 
-        static void addPair(Car, Route);
+        static void assignPair(Car, Route);
+
+        static void unassignPair(int);
 
         static void editCar(Car, Car);
-        static void editRoute(Route, Route); //to-do
+        static void editRoute(Route, Route);
 
-
-        static void editPair(Car, Car, Route); //rework
-        static void removePair(Car); //rework
-        static void getPairByCar(Car); //rework
-        static void getPairByRoute(Route); //rework
-
-        
-        
-        static void removeCar(int); //to-do
-
-        
-        
-        static void removeRoute(int); //to-do
-
-
-
-        
+        static void deleteCar(int); //fix ids
+        static void deleteRoute(int); //fix ids
 };

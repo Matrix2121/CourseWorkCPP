@@ -52,8 +52,11 @@ int Route::getRepetitions(){
     return this->repetitions;
 }
 
-void Route::addCarOnRoute(){
+void Route::addCarToRoute(){
     this->carsOnRoute++;
+}
+void Route::removeCarFromRoute(){
+    this->carsOnRoute--;
 }
 int Route::getCarsOnRoute(){
     return this->carsOnRoute;

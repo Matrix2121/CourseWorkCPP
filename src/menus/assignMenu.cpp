@@ -59,7 +59,7 @@ void AssignMenu::assign(){
 
         if(assignInput == "y"){
             Manager::takeCar(carID);
-            Manager::addPair(c1, r1);
+            Manager::assignPair(c1, r1);
             Manager::addCarToRoute(routeID);
             std::cout << std::flush;
             return;
