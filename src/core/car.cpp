@@ -89,10 +89,25 @@ bool Car::operator==(const Car& other) const {
     return this->ID == other.ID;
 }
 
+
 std::ostream& operator<<(std::ostream& os, const Car& car){
     os << "[" << car.ID << ", " << car.make << ", " << car.model << ", " << car.year << ", " 
     << car.seats << " seats, " << car.loadCapacity << " kg, " << car.fuelConsumption  << " l/100km, " << car.status << "]";
     return os;
 }
 
+std::istream& operator>>(std::istream& is, Car& car) {
+    char ch;
+    std::string seatsStr, kgStr, fuelStr;
 
+    is >> ch >> car.ID >> ch;
+    std::getline(is, car.make, ',');
+    std::getline(is, car.model, ',');
+    is >> car.year >> ch >> car.seats;
+    is.ignore(7, ',');
+    is >> car.loadCapacity;
+    is.ignore(4, ',');
+    is >> car.fuelConsumption;
+    is.ignore(9, ',');
+    std::getline(is, car.status, ']');
+}

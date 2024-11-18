@@ -49,4 +49,5 @@ class Car{
         bool operator==(const Car&) const;
 
         friend std::ostream& operator<<(std::ostream&, const Car&);
+        friend std::istream& operator>>(std::istream&, Car&);
 };

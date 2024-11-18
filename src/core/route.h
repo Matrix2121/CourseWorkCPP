@@ -41,4 +41,5 @@ class Route{
         bool operator<(const Route&) const;
 
         friend std::ostream& operator<<(std::ostream&, const Route&);
+        friend std::istream& operator>>(std::istream&, Route&);
 };

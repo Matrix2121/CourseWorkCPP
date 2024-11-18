@@ -83,3 +83,30 @@ std::ostream& operator<<(std::ostream& os, const Route& route){
 
     return os;
 }
+
+
+std::istream& operator>>(std::istream& is, Route& route) {
+    char ch;
+    is >> ch;
+    is >> route.ID >> ch;
+
+    std::vector<std::string> points;
+    std::string point;
+    is >> ch;
+    
+    while (ch != '}') {
+        std::getline(is, point, ',');
+        point.erase(point.find_last_not_of(" \n\r\t") + 1);
+        points.push_back(point);
+        is >> ch;
+        if (ch == '}') break;
+    }
+    route.connectingPoints = points;
+
+    is >> ch;
+    is >> route.length >> ch;
+    is >> route.repetitions >> ch;
+    is >> route.carsOnRoute >> ch;
+
+    return is;
+}

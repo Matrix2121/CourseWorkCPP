@@ -57,6 +57,7 @@
         "set": "cpp",
         "bitset": "cpp",
         "regex": "cpp",
-        "cinttypes": "cpp"
+        "cinttypes": "cpp",
+        "fstream": "cpp"
     }
 }
