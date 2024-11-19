@@ -16,6 +16,15 @@ Route::Route(std::vector<std::string> connectingPoints, double length, int repet
     Route::counter++;
 }
 
+void Route::setCounter(int i){
+    Route::counter = i;
+}
+
+int Route::getCounter(){
+    return Route::counter;
+}
+
+
 void Route::IDDeclaration(){
     this->ID = Route::counter;
     Route::counter++;
@@ -109,4 +118,8 @@ std::istream& operator>>(std::istream& is, Route& route) {
     is >> route.carsOnRoute >> ch;
 
     return is;
+}
+
+bool Route::isEmpty() const{
+    return connectingPoints.empty() && length == 0 && repetitions == 0 && carsOnRoute == 0;
 }

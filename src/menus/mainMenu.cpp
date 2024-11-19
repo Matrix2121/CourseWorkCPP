@@ -36,6 +36,7 @@ void MainMenu::mainMenu(){
                 MainMenu::deleteMenu();
                 break;
             case 7:
+                FileManager::closeFiles();
                 return;
             default:
                 std::cout << "Invalid input! Enter a number between 1 and 6!" << std::endl;
@@ -49,7 +50,7 @@ void MainMenu::displayMenu(){
 
     while(true){
 
-        std::cout << "\nChoose one of the following (1/2/3/4):\n1. Display free cars\n2. Display all routes\n3. Display all pairs\n4. Return to main menu" << std::endl;
+        std::cout << "\nChoose one of the following (1/2/3/4):\n1. Display all cars\n2. Display all routes\n3. Display all pairs\n4. Return to main menu" << std::endl;
 
         std::cin >> displayMenuInput;
 
@@ -149,11 +150,11 @@ void MainMenu::editMenu(){
 }
 
 void MainMenu::deleteMenu(){
-    int editMenuInput;
+    int deleteMenuInput;
     
     while(true){
         std::cout << "\nChoose what you want to create (1/2/3):\n1. Delete car\n2. Delete Route\n3. Return to main main menu" << std::endl;
-        std::cin >> editMenuInput;
+        std::cin >> deleteMenuInput;
 
         if (std::cin.fail()) {
             std::cin.clear();
@@ -162,7 +163,7 @@ void MainMenu::deleteMenu(){
             continue;
         }
 
-        switch (editMenuInput){
+        switch (deleteMenuInput){
             case 1:
                 DeleteMenu::deleteCar();
                 break;

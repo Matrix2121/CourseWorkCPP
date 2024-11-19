@@ -9,6 +9,7 @@
 #include "editMenu.h"
 #include "deleteMenu.h"
 #include "../manager.h"
+#include "../fileManager.h"
 
 class MainMenu{
     public:
@@ -18,6 +19,5 @@ class MainMenu{
         static void assignMenu();
         static void unAssignMenu();
         static void editMenu();
-        static void deleteMenu(); //to-do
-    
+        static void deleteMenu();
 };

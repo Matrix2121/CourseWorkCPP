@@ -71,6 +71,7 @@ void CreateMenu::createCar(){
     std::cout << std::flush;
     c1.IDDeclaration();
     Manager::addCar(c1);
+    FileManager::saveCarToFile(c1);
 }
 
 void CreateMenu::createRoute(){
@@ -125,4 +126,5 @@ void CreateMenu::createRoute(){
     std::cout << std::flush;
     r1.IDDeclaration();
     Manager::addRoute(r1);
+    FileManager::saveRouteToFile(r1);
 }

@@ -143,7 +143,7 @@ void Manager::editRoute(Route oldRoute, Route newRoute){
 void Manager::deleteCar(int carID){
     Car c1 = Manager::findCar(carID);
 
-    for(auto pair : storageAllPairs){
+    for(auto& pair : storageAllPairs){
         if(pair.first == c1){
             storageAllPairs.erase(pair.first);
             break;
@@ -158,10 +158,34 @@ void Manager::deleteRoute(int routeID){
 
     storageAllRoutes.erase(r1);
 
-    for(auto pair : storageAllPairs){
+    for(auto& pair : storageAllPairs){
         if(pair.second == r1){
             storageAllPairs.erase(pair.first);
             break;
         }
     }
+}
+
+int Manager::carCounter(){
+    int counter = 0;
+    for(Car car : storageAllCars){
+        counter++;
+    }
+    return counter;
+}
+
+int Manager::routeCounter(){
+    int counter = 0;
+    for(Route car : storageAllRoutes){
+        counter++;
+    }
+    return counter;
+}
+
+int Manager::pairCounter(){
+    int counter = 0;
+    for(auto pair : storageAllPairs){
+        counter++;
+    }
+    return counter;
 }

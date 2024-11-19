@@ -17,7 +17,10 @@ class Car{
     
     public:
         Car();
-        Car(int, std::string, std::string, int, int, double, double);
+        Car(std::string, std::string, int, int, int, double);
+
+        static void setCounter(int);
+        static int getCounter();
 
         void IDDeclaration();
 
@@ -50,4 +53,6 @@ class Car{
 
         friend std::ostream& operator<<(std::ostream&, const Car&);
         friend std::istream& operator>>(std::istream&, Car&);
+
+        bool isEmpty() const;
 };

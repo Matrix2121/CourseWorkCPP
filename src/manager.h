@@ -5,6 +5,7 @@
 #include "core/car.h"
 #include "core/route.h"
 #include "regex/regex.h"
+#include "fileManager.h"
 
 class Manager{
     private:
@@ -35,6 +36,10 @@ class Manager{
         static void editCar(Car, Car);
         static void editRoute(Route, Route);
 
-        static void deleteCar(int); //fix ids
-        static void deleteRoute(int); //fix ids
+        static void deleteCar(int); //fix deletion
+        static void deleteRoute(int); //fix deletion
+
+        static int carCounter();
+        static int routeCounter();
+        static int pairCounter();
 };

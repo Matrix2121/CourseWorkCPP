@@ -18,6 +18,9 @@ class Route{
         Route();
         Route(std::vector<std::string>, double, int);
 
+        static void setCounter(int);
+        static int getCounter();
+
         void IDDeclaration();
 
         void setID(int);
@@ -42,4 +45,6 @@ class Route{
 
         friend std::ostream& operator<<(std::ostream&, const Route&);
         friend std::istream& operator>>(std::istream&, Route&);
+
+        bool isEmpty() const;
 };

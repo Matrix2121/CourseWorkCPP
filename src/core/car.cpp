@@ -7,7 +7,7 @@ Car::Car(){
     this->status = "Untaken";
 }
 
-Car::Car(int ID, std::string make, std::string model, int year, int seats, double loadCapacity, double fuelConsumption){
+Car::Car(std::string make, std::string model, int year, int seats, int loadCapacity, double fuelConsumption){
     this->ID = Car::counter;
     this->make = make;
     this->model = model;
@@ -17,6 +17,14 @@ Car::Car(int ID, std::string make, std::string model, int year, int seats, doubl
     this->fuelConsumption  = fuelConsumption;
     this->status = "Untaken";
     Car::counter++;
+}
+
+void Car::setCounter(int i){
+    Car::counter = i;
+}
+
+int Car::getCounter(){
+    return Car::counter;
 }
 
 void Car::IDDeclaration(){
@@ -98,8 +106,6 @@ std::ostream& operator<<(std::ostream& os, const Car& car){
 
 std::istream& operator>>(std::istream& is, Car& car) {
     char ch;
-    std::string seatsStr, kgStr, fuelStr;
-
     is >> ch >> car.ID >> ch;
     std::getline(is, car.make, ',');
     std::getline(is, car.model, ',');
@@ -110,4 +116,9 @@ std::istream& operator>>(std::istream& is, Car& car) {
     is >> car.fuelConsumption;
     is.ignore(9, ',');
     std::getline(is, car.status, ']');
+    return is;
+}
+
+bool Car::isEmpty() const {
+    return make.empty() && model.empty() && year == 0 && seats == 0 && loadCapacity == 0 && fuelConsumption == 0.0 && status.empty();
 }

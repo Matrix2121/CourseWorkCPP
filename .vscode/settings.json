@@ -58,6 +58,10 @@
         "bitset": "cpp",
         "regex": "cpp",
         "cinttypes": "cpp",
-        "fstream": "cpp"
+        "fstream": "cpp",
+        "codecvt": "cpp",
+        "ratio": "cpp",
+        "cstring": "cpp",
+        "filesystem": "cpp"
     }
 }

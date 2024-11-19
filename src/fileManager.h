@@ -1,27 +1,35 @@
 #pragma once
 #include <iostream>
 #include <fstream>
+#include <filesystem>
 #include "manager.h"
 
-class FileManager{
-    private:
+class FileManager {
+    public:
         static std::fstream carsFile;
         static std::fstream routesFile;
         static std::fstream pairsFile;
-        static std::fstream deletedFile;
+        static std::fstream deletedCarsFile;
+        static std::fstream deletedRoutesFile;
 
     public:
-        static bool createFiles();
+        static bool initializeFiles();
 
-        static std::vector<Car> loadCarsFromFile();
-        static void saveCarToFile(Car);
+        static void loadData();
+
+        static void saveCarToFile(const Car& car);
         static void deleteCarFromFile(Car);
 
-        static std::set<Route> loadRoutesFromFile();
-        static void saveRouteToFile(Route);
+        static void saveRouteToFile(const Route&);
         static void deleteRouteFromFile(Route);
+        
+        static void savePairToFile(const Car&, const Route&);
+        static void deletePairFromFile(Car, Route);
 
-        static std::map<Car, Route> loadPairsFromFile();
-        static void savePairToFile(Car);
-        static void deletePairFromFile(Car);
+        static void addDeletedCarToFile(Car);
+
+        static bool addDeletedRouteToFile(Route);
+
+        static void closeFiles();
 };
+
