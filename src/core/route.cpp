@@ -1,4 +1,6 @@
 #include "route.h"
+#include <iostream>
+#include <cctype>
 
 int Route::counter = 1;
 
@@ -88,35 +90,37 @@ std::ostream& operator<<(std::ostream& os, const Route& route){
         os << route.connectingPoints.back();
     }
 
-    os << "}, " << route.length << "km, " << route.repetitions << " repetitions, " << route.carsOnRoute << " cars]";
+    os << "}, " << route.length << " km, " << route.repetitions << " repetitions, " << route.carsOnRoute << " cars]";
 
     return os;
 }
 
-
 std::istream& operator>>(std::istream& is, Route& route) {
-    char ch;
-    is >> ch;
-    is >> route.ID >> ch;
-
     std::vector<std::string> points;
     std::string point;
-    is >> ch;
     
-    while (ch != '}') {
-        std::getline(is, point, ',');
-        point.erase(point.find_last_not_of(" \n\r\t") + 1);
-        points.push_back(point);
-        is >> ch;
-        if (ch == '}') break;
+    if(is.peek() != '['){
+        return is;
     }
-    route.connectingPoints = points;
 
-    is >> ch;
-    is >> route.length >> ch;
-    is >> route.repetitions >> ch;
-    is >> route.carsOnRoute >> ch;
+    is.ignore(5);
 
+    while(true){
+        if(is.peek() == '}'){
+            break;
+        } else {
+            is >> point;
+            points.push_back(point);
+        }
+    }
+    
+    is.ignore(3);
+    is >> route.length;
+    is.ignore(5);
+    is >> route.repetitions;
+    is.ignore(14);
+    is >> route.carsOnRoute;
+    is.ignore(6);
     return is;
 }
 

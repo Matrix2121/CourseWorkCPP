@@ -1,4 +1,5 @@
 #include "manager.h"
+#include <vector>
 
 std::vector<Car> Manager::storageAllCars;
 std::set<Route> Manager::storageAllRoutes;
@@ -150,7 +151,14 @@ void Manager::deleteCar(int carID){
         }
     }
 
-    storageAllPairs.erase(c1);
+    for (std::vector<Car>::iterator it = storageAllCars.begin(); it != storageAllCars.end(); ++it) {
+    if (it->getID() == carID) {
+        storageAllCars.erase(it);
+        break;
+    }
+}
+
+    
 }
 
 void Manager::deleteRoute(int routeID){
@@ -188,4 +196,26 @@ int Manager::pairCounter(){
         counter++;
     }
     return counter;
+}
+
+bool Manager::carsEmpty(){
+    return storageAllCars.empty();
+}
+
+void Manager::saveCarsToFile(){
+    for(Car car : Manager::storageAllCars){
+        FileManager::saveCarToFile(car);
+    }
+}
+
+void Manager::saveRoutesToFile(){
+    for(Route route : Manager::storageAllRoutes){
+        FileManager::saveRouteToFile(route);
+    }
+}
+
+void Manager::savePairsToFile(){
+    for(auto pair : storageAllPairs){
+        FileManager::savePairToFile(pair.first, pair.second);
+    }
 }

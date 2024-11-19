@@ -42,4 +42,10 @@ class Manager{
         static int carCounter();
         static int routeCounter();
         static int pairCounter();
+
+        static bool carsEmpty();
+
+        static void saveCarsToFile();
+        static void saveRoutesToFile();
+        static void savePairsToFile();      
 };

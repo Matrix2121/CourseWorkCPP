@@ -4,15 +4,13 @@
 std::fstream FileManager::carsFile;
 std::fstream FileManager::routesFile;
 std::fstream FileManager::pairsFile;
-std::fstream FileManager::deletedCarsFile;
-std::fstream FileManager::deletedRoutesFile;
 
 bool FileManager::initializeFiles() {
     if (!std::filesystem::exists("data/cars.txt")) {
         carsFile.open("data/cars.txt", std::ios::out);
         carsFile.close();
     }
-    carsFile.open("data/cars.txt", std::ios::in | std::ios::out | std::ios::app);
+    carsFile.open("data/cars.txt", std::ios::in | std::ios::out);
     if (!carsFile.is_open()) {
         std::cerr << "Error opening cars.txt" << std::endl;
         return false;
@@ -22,7 +20,7 @@ bool FileManager::initializeFiles() {
         routesFile.open("data/routes.txt", std::ios::out);
         routesFile.close();
     }
-    routesFile.open("data/routes.txt", std::ios::in | std::ios::out | std::ios::app);
+    routesFile.open("data/routes.txt", std::ios::in | std::ios::out);
     if (!routesFile.is_open()) {
         std::cerr << "Error opening routes.txt" << std::endl;
         return false;
@@ -32,29 +30,9 @@ bool FileManager::initializeFiles() {
         pairsFile.open("data/pairs.txt", std::ios::out);
         pairsFile.close();
     }
-    pairsFile.open("data/pairs.txt", std::ios::in | std::ios::out | std::ios::app);
+    pairsFile.open("data/pairs.txt", std::ios::in | std::ios::out);
     if (!pairsFile.is_open()) {
         std::cerr << "Error opening pairs.txt" << std::endl;
-        return false;
-    }
-
-    if (!std::filesystem::exists("data/deleted/cars.txt")) {
-        deletedCarsFile.open("data/deleted/cars.txt", std::ios::out);
-        deletedCarsFile.close();
-    }
-    deletedCarsFile.open("data/deleted/cars.txt", std::ios::in | std::ios::out | std::ios::app);
-    if (!deletedCarsFile.is_open()) {
-        std::cerr << "Error opening deleted/cars.txt" << std::endl;
-        return false;
-    }
-
-    if (!std::filesystem::exists("data/deleted/routes.txt")) {
-        deletedRoutesFile.open("data/deleted/routes.txt", std::ios::out);
-        deletedRoutesFile.close();
-    }
-    deletedRoutesFile.open("data/deleted/routes.txt", std::ios::in | std::ios::out | std::ios::app);
-    if (!deletedRoutesFile.is_open()) {
-        std::cerr << "Error opening deleted/routes.txt" << std::endl;
         return false;
     }
 
@@ -62,12 +40,13 @@ bool FileManager::initializeFiles() {
     return true;
 }
 
-void FileManager::loadData() { //bug
+void FileManager::loadData() {
+    std::string delimiter;
     int counter;
     Car car;
     Route route;
-    char delimiter;
 
+    int carID = 0, routeID = 0;
 
     carsFile.clear();
     carsFile.seekg(0);
@@ -78,35 +57,49 @@ void FileManager::loadData() { //bug
     pairsFile.clear();
     pairsFile.seekg(0);
 
-    std::cout << "flag 0";
+    if (std::filesystem::file_size("data/cars.txt") > 0) {
+        while (carsFile >> car) {
+            if (!car.isEmpty()) {
+                Manager::addCar(car);
+                if(carID < car.getID()){
+                    carID = car.getID();
+                }
+            } else {
+                std::cout << "Empty car encountered!" << std::endl;
+                break;
+            }
+        }
+    } else {
+        std::cout << "cars.txt is empty." << std::endl;
+    }
 
-    while (carsFile >> car) { 
-        if (!car.isEmpty()) {
-            Manager::addCar(car); 
-        } else {
+    Car::setCounter(carID + 1);
+
+    if (std::filesystem::file_size("data/routes.txt") > 0) {
+        while (routesFile >> route) {
             std::cout << "flag 1";
-            break;
+            if (!route.isEmpty()) {
+                Manager::addRoute(route);
+                if(routeID < route.getID()){
+                    routeID = route.getID();
+                }
+            } else {
+                std::cout << "Empty route encountered!" << std::endl;
+                break;
+            }
         }
+    } else {
+        std::cout << "routes.txt is empty." << std::endl;
     }
 
-    while(routesFile >> route){
-        if(!route.isEmpty()){
-            Manager::addRoute(route);
-        } else {
-            std::cout << "flag 2";
-            break;
-        }
-    }
+    Route::setCounter(routeID + 1);
 
-
-    while(pairsFile >> car >> delimiter >> route){
-        if (!(car.isEmpty() && route.isEmpty()))
-        {
+    if (std::filesystem::file_size("data/pairs.txt") > 0) {
+        while (pairsFile >> car >> delimiter >> route) {
             Manager::assignPair(car, route);
-        } else {
-            std::cout << "flag 3";
-            break;
         }
+    } else {
+        std::cout << "pairs.txt is empty." << std::endl;
     }
 }
 
@@ -125,9 +118,10 @@ void FileManager::savePairToFile(const Car& car, const Route& route){
 }
 
 void FileManager::closeFiles() {
+    Manager::saveCarsToFile();
+    Manager::saveRoutesToFile();
+    Manager::savePairsToFile();
     if (carsFile.is_open()) carsFile.close();
     if (routesFile.is_open()) routesFile.close();
     if (pairsFile.is_open()) pairsFile.close();
-    if (deletedCarsFile.is_open()) deletedCarsFile.close();
-    if (deletedRoutesFile.is_open()) deletedRoutesFile.close();
 }
