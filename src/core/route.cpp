@@ -103,7 +103,9 @@ std::istream& operator>>(std::istream& is, Route& route) {
         return is;
     }
 
-    is.ignore(5);
+    is >> route.ID;
+
+    is.ignore(3);
 
     while(true){
         if(is.peek() == '}'){
