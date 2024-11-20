@@ -96,6 +96,7 @@ std::ostream& operator<<(std::ostream& os, const Route& route){
 }
 
 std::istream& operator>>(std::istream& is, Route& route) {
+    char ch;
     std::vector<std::string> points;
     std::string point;
     
@@ -103,20 +104,20 @@ std::istream& operator>>(std::istream& is, Route& route) {
         return is;
     }
 
-    is >> route.ID;
+    is >> ch >> route.ID;
 
     is.ignore(3);
 
     while(true){
-        if(is.peek() == '}'){
+        std::getline(is, point, ',');
+        if(point.find('}') < point.length()){
             break;
-        } else {
-            is >> point;
-            points.push_back(point);
         }
+        route.addConnectingPoints(point);
+        is.ignore(1);
     }
-    
-    is.ignore(3);
+
+    is.ignore(2);
     is >> route.length;
     is.ignore(5);
     is >> route.repetitions;

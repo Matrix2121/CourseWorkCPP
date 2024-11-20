@@ -1,0 +1,1 @@
+[1, Ford, ie, 2005, 5 seats, 1300 kg, 7 l/100km, Untaken]-[1, {A, B}, 5 km, 3 repetitions, 2 cars]

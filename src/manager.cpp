@@ -205,6 +205,7 @@ bool Manager::carsEmpty(){
 void Manager::saveCarsToFile(){
     for(Car car : Manager::storageAllCars){
         FileManager::saveCarToFile(car);
+        std::cout << car;
     }
 }
 
