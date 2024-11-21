@@ -40,7 +40,7 @@ bool FileManager::initializeFiles() {
 }
 
 void FileManager::loadData() {
-    std::string delimiter;
+    char delimiter;
     int counter;
     Car car;
     Route route;

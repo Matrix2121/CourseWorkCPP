@@ -12,7 +12,7 @@ class Route{
         mutable std::vector<std::string> connectingPoints;
         double length;
         int repetitions;
-        int carsOnRoute;
+        // int carsOnRoute;
 
     public:
         Route();
@@ -36,9 +36,9 @@ class Route{
         void setRepetitions(int);
         int getRepetitions();
 
-        void addCarToRoute();
-        void removeCarFromRoute();
-        int getCarsOnRoute();
+        // void addCarToRoute();
+        // void removeCarFromRoute();
+        // int getCarsOnRoute();
 
         bool operator==(Route&) const;
         bool operator<(const Route&) const;

@@ -3,8 +3,8 @@
 void AssignMenu::assign(){
     int carID, routeID;
     std::string assignInput;
-    Car c1;
-    Route r1;
+    Car c1 = Car();
+    Route r1 = Route();
 
     DisplayMenu::displayAllCars();
     while(true){
@@ -67,7 +67,7 @@ void AssignMenu::assign(){
         if(assignInput == "y"){
             Manager::assignPair(c1, r1);
             Manager::takeCar(carID);
-            Manager::addCarToRoute(routeID);
+            //Manager::addCarToRoute(routeID);
             std::cout << std::flush;
             return;
         } else if(assignInput == "n"){

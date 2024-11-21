@@ -26,8 +26,8 @@ class Manager{
 
         static void takeCar(int);
         static void untakeCar(int);
-        static void addCarToRoute(int);
-        static void removeCarFromRoute(int);
+        // static void addCarToRoute(int);
+        // static void removeCarFromRoute(int);
 
         static void assignPair(Car, Route);
 
@@ -38,12 +38,6 @@ class Manager{
 
         static void deleteCar(int);
         static void deleteRoute(int);
-
-        static int carCounter();
-        static int routeCounter();
-        static int pairCounter();
-
-        static bool carsEmpty();
 
         static void saveCarsToFile();
         static void saveRoutesToFile();

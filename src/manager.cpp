@@ -67,6 +67,7 @@ void Manager::takeCar(int ID){
     for(auto pair : storageAllPairs){
         if(pair.first.getID() == ID){
             newCar = pair.first;
+            route = pair.second;
             newCar.setStatusTaken();
             storageAllPairs.erase(pair.first);
             storageAllPairs.insert({newCar, route});
@@ -93,45 +94,45 @@ void Manager::untakeCar(int ID){
     }
 }
 
-void Manager::addCarToRoute(int ID){
-    Route newRoute;
-    for(Route r1 : storageAllRoutes){
-        if(r1.getID() == ID){
-            newRoute = r1;
-            std::cout << r1;
-            storageAllRoutes.erase(r1);
-            newRoute.addCarToRoute();
-            storageAllRoutes.insert(newRoute);
-            std::cout << r1;
-        }
-    }
+// void Manager::addCarToRoute(int ID){
+//     Route newRoute;
+//     for(Route r1 : storageAllRoutes){
+//         if(r1.getID() == ID){
+//             newRoute = r1;
+//             std::cout << r1;
+//             storageAllRoutes.erase(r1);
+//             newRoute.addCarToRoute();
+//             storageAllRoutes.insert(newRoute);
+//             std::cout << r1;
+//         }
+//     }
 
-    for(auto pair : storageAllPairs){
-        if(pair.second.getID() == ID){
-            pair.second.addCarToRoute();
-            break;
-        }
-    }
-}
+//     for(auto pair : storageAllPairs){
+//         if(pair.second.getID() == ID){
+//             pair.second.addCarToRoute();
+//             break;
+//         }
+//     }
+// }
 
-void Manager::removeCarFromRoute(int ID){
-    Route newRoute;
-    for(Route r1 : storageAllRoutes){
-        if(r1.getID() == ID){
-            newRoute = r1;
-            storageAllRoutes.erase(r1);
-            newRoute.removeCarFromRoute();
-            storageAllRoutes.insert(newRoute);
-        }
-    }
+// void Manager::removeCarFromRoute(int ID){
+//     Route newRoute;
+//     for(Route r1 : storageAllRoutes){
+//         if(r1.getID() == ID){
+//             newRoute = r1;
+//             storageAllRoutes.erase(r1);
+//             newRoute.removeCarFromRoute();
+//             storageAllRoutes.insert(newRoute);
+//         }
+//     }
 
-    for(auto pair : storageAllPairs){
-        if(pair.second.getID() == ID){
-            pair.second.removeCarFromRoute();
-            break;
-        }
-    }
-}
+//     for(auto pair : storageAllPairs){
+//         if(pair.second.getID() == ID){
+//             pair.second.removeCarFromRoute();
+//             break;
+//         }
+//     }
+// }
 
 void Manager::assignPair(Car c1, Route r1){  
     storageAllPairs.insert({c1, r1});
@@ -142,7 +143,7 @@ void Manager::unassignPair(int carID){
     auto carIt = findCar(carID);
     int routeID = storageAllPairs[carIt].getID();
 
-    removeCarFromRoute(routeID);
+    // removeCarFromRoute(routeID);
     untakeCar(carID);
 
     storageAllPairs.erase(carIt);
@@ -171,7 +172,7 @@ void Manager::editCar(Car oldCar, Car newCar){
 }
 
 void Manager::editRoute(Route oldRoute, Route newRoute){
-    if(oldRoute.getCarsOnRoute() >= 1){
+    // if(oldRoute.getCarsOnRoute() >= 1){
         Car c1 = Car();
         for(auto& pair : storageAllPairs){
             if(pair.second == oldRoute){
@@ -181,7 +182,7 @@ void Manager::editRoute(Route oldRoute, Route newRoute){
                 break;
             }
         }
-    }
+    // }
 
     auto r1 = storageAllRoutes.find(oldRoute);
     if (r1 != storageAllRoutes.end()) {
@@ -223,33 +224,6 @@ void Manager::deleteRoute(int routeID){
     }
 }
 
-int Manager::carCounter(){
-    int counter = 0;
-    for(Car car : storageAllCars){
-        counter++;
-    }
-    return counter;
-}
-
-int Manager::routeCounter(){
-    int counter = 0;
-    for(Route car : storageAllRoutes){
-        counter++;
-    }
-    return counter;
-}
-
-int Manager::pairCounter(){
-    int counter = 0;
-    for(auto pair : storageAllPairs){
-        counter++;
-    }
-    return counter;
-}
-
-bool Manager::carsEmpty(){
-    return storageAllCars.empty();
-}
 
 void Manager::saveCarsToFile(){
     for(Car car : Manager::storageAllCars){
