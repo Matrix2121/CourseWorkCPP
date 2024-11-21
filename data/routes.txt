@@ -1,1 +1,1 @@
-[1, {su, tu}, 25 km, 80 repetitions, 0 car(s)][2, {su, tu}, 50 km, 20 repetitions, 0 car(s)]
+[1, {su, tu}, 25 km, 80 repetitions, 2 car(s)][2, {lozenec, mladost}, 50 km, 20 repetitions, 0 car(s)]

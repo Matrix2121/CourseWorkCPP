@@ -98,15 +98,18 @@ void Manager::addCarToRoute(int ID){
     for(Route r1 : storageAllRoutes){
         if(r1.getID() == ID){
             newRoute = r1;
+            std::cout << r1;
             storageAllRoutes.erase(r1);
             newRoute.addCarToRoute();
             storageAllRoutes.insert(newRoute);
+            std::cout << r1;
         }
     }
 
     for(auto pair : storageAllPairs){
         if(pair.second.getID() == ID){
             pair.second.addCarToRoute();
+            break;
         }
     }
 }
@@ -125,6 +128,7 @@ void Manager::removeCarFromRoute(int ID){
     for(auto pair : storageAllPairs){
         if(pair.second.getID() == ID){
             pair.second.removeCarFromRoute();
+            break;
         }
     }
 }
