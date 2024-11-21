@@ -1,1 +1,1 @@
-[1, Ford, ie, 2005, 5 seats, 1300 kg, 7 l/100km, Untaken][2, Audi, A3, 2002, 5 seats, 1200 kg, 6 l/100km, Untaken]
+[1, Ford, ie, 2005, 5 seats, 1300 kg, 7 l/100km, untaken][2, Audi, A3, 2002, 5 seats, 1200 kg, 6 l/100km, untaken][3, Toyota, Corolla, 2002, 5 seats, 1500 kg, 6.5 l/100km, untaken][4, Tesla, S, 2022, 5 seats, 2500 kg, 0 l/100km, untaken]

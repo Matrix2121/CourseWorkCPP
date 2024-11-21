@@ -1,6 +1,4 @@
 #include "route.h"
-#include <iostream>
-#include <cctype>
 
 int Route::counter = 1;
 
@@ -64,10 +62,10 @@ int Route::getRepetitions(){
 }
 
 void Route::addCarToRoute(){
-    this->carsOnRoute++;
+    ++carsOnRoute;
 }
 void Route::removeCarFromRoute(){
-    this->carsOnRoute--;
+    --carsOnRoute;
 }
 int Route::getCarsOnRoute(){
     return this->carsOnRoute;
@@ -90,43 +88,45 @@ std::ostream& operator<<(std::ostream& os, const Route& route){
         os << route.connectingPoints.back();
     }
 
-    os << "}, " << route.length << " km, " << route.repetitions << " repetitions, " << route.carsOnRoute << " cars]";
+    os << "}, " << route.length << " km, " << route.repetitions << " repetitions, " << route.carsOnRoute << " car(s)]";
 
     return os;
 }
 
 std::istream& operator>>(std::istream& is, Route& route) {
-    char ch;
-    std::vector<std::string> points;
-    std::string point;
-    
     if(is.peek() != '['){
         return is;
     }
 
-    is >> ch >> route.ID;
+    route = Route();
 
+    char ch;
+    std::string point;
+    
+    is >> ch >> route.ID;
     is.ignore(3);
 
     while(true){
         std::getline(is, point, ',');
         if(point.find('}') < point.length()){
+            point.pop_back();
+            route.addConnectingPoints(point);
             break;
         }
         route.addConnectingPoints(point);
         is.ignore(1);
     }
 
-    is.ignore(2);
+    is.ignore(1);
     is >> route.length;
     is.ignore(5);
     is >> route.repetitions;
     is.ignore(14);
     is >> route.carsOnRoute;
-    is.ignore(6);
+    is.ignore(8);
     return is;
 }
 
 bool Route::isEmpty() const{
-    return connectingPoints.empty() && length == 0 && repetitions == 0 && carsOnRoute == 0;
+    return connectingPoints.empty() && length == 0 && repetitions == 0;
 }

@@ -46,7 +46,8 @@ class Car{
         void setFuelConsumption(double fuelConsumption);
         double getFuelConsumption();
 
-        void setStatus(std::string);
+        void setStatusTaken();
+        void setStatusUntaken();
         std::string getStatus();
 
         bool operator<(const Car&) const;

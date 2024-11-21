@@ -1,1 +1,1 @@
-[1, {A, B, C}, 15 km, 3 repetitions, 2 cars][2, {X, Y}, 25 km, 5 repetitions, 4 cars]
+[1, {su, tu}, 25 km, 80 repetitions, 0 car(s)][2, {su, tu}, 50 km, 20 repetitions, 0 car(s)]

@@ -1,5 +1,4 @@
 #include "manager.h"
-#include <vector>
 
 std::vector<Car> Manager::storageAllCars;
 std::set<Route> Manager::storageAllRoutes;
@@ -57,33 +56,75 @@ Route Manager::findRoute(int ID){
 }
 
 void Manager::takeCar(int ID){
+    Car newCar;
+    Route route;
     for(Car& c1 : storageAllCars){
         if(c1.getID() == ID){
-            c1.setStatus("Taken");
+            c1.setStatusTaken();
+        }
+    }
+
+    for(auto pair : storageAllPairs){
+        if(pair.first.getID() == ID){
+            newCar = pair.first;
+            newCar.setStatusTaken();
+            storageAllPairs.erase(pair.first);
+            storageAllPairs.insert({newCar, route});
         }
     }
 }
 
 void Manager::untakeCar(int ID){
+    Car newCar;
+    Route route;
     for(Car& c1 : storageAllCars){
         if(c1.getID() == ID){
-            c1.setStatus("Untaken");
+            c1.setStatusUntaken();
+        }
+    }
+
+    for(auto pair : storageAllPairs){
+        if(pair.first.getID() == ID){
+            newCar = pair.first;
+            newCar.setStatusUntaken();
+            storageAllPairs.erase(pair.first);
+            storageAllPairs.insert({newCar, route});
         }
     }
 }
 
 void Manager::addCarToRoute(int ID){
+    Route newRoute;
     for(Route r1 : storageAllRoutes){
         if(r1.getID() == ID){
-            r1.addCarToRoute();
+            newRoute = r1;
+            storageAllRoutes.erase(r1);
+            newRoute.addCarToRoute();
+            storageAllRoutes.insert(newRoute);
+        }
+    }
+
+    for(auto pair : storageAllPairs){
+        if(pair.second.getID() == ID){
+            pair.second.addCarToRoute();
         }
     }
 }
 
 void Manager::removeCarFromRoute(int ID){
+    Route newRoute;
     for(Route r1 : storageAllRoutes){
         if(r1.getID() == ID){
-            r1.removeCarFromRoute();
+            newRoute = r1;
+            storageAllRoutes.erase(r1);
+            newRoute.removeCarFromRoute();
+            storageAllRoutes.insert(newRoute);
+        }
+    }
+
+    for(auto pair : storageAllPairs){
+        if(pair.second.getID() == ID){
+            pair.second.removeCarFromRoute();
         }
     }
 }
@@ -94,7 +135,13 @@ void Manager::assignPair(Car c1, Route r1){
 
 
 void Manager::unassignPair(int carID){
-    storageAllPairs.erase(Manager::findCar(carID));
+    auto carIt = findCar(carID);
+    int routeID = storageAllPairs[carIt].getID();
+
+    removeCarFromRoute(routeID);
+    untakeCar(carID);
+
+    storageAllPairs.erase(carIt);
 }
 
 
@@ -156,9 +203,7 @@ void Manager::deleteCar(int carID){
         storageAllCars.erase(it);
         break;
     }
-}
-
-    
+    }
 }
 
 void Manager::deleteRoute(int routeID){
@@ -205,7 +250,6 @@ bool Manager::carsEmpty(){
 void Manager::saveCarsToFile(){
     for(Car car : Manager::storageAllCars){
         FileManager::saveCarToFile(car);
-        std::cout << car;
     }
 }
 

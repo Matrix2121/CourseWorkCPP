@@ -4,7 +4,7 @@ int Car::counter = 1;
 
 Car::Car(){
     this->ID = -1;
-    this->status = "Untaken";
+    this->status = "untaken";
 }
 
 Car::Car(std::string make, std::string model, int year, int seats, int loadCapacity, double fuelConsumption){
@@ -15,7 +15,7 @@ Car::Car(std::string make, std::string model, int year, int seats, int loadCapac
     this->seats = seats;
     this->loadCapacity = loadCapacity;
     this->fuelConsumption  = fuelConsumption;
-    this->status = "Untaken";
+    this->status = "untaken";
     Car::counter++;
 }
 
@@ -82,8 +82,11 @@ double Car::getFuelConsumption(){
     return this->fuelConsumption;
 }
 
-void Car::setStatus(std::string taken){
-    this->status = status;
+void Car::setStatusTaken(){
+    status = "taken";
+}
+void Car::setStatusUntaken(){
+    status = "untaken";
 }
 std::string Car::getStatus(){
     return this->status;
@@ -101,17 +104,23 @@ bool Car::operator==(const Car& other) const {
 std::ostream& operator<<(std::ostream& os, const Car& car){
     os << "[" << car.ID << ", " << car.make << ", " << car.model << ", " << car.year << ", " 
     << car.seats << " seats, " << car.loadCapacity << " kg, " << car.fuelConsumption  << " l/100km, " << car.status << "]";
-    std::cout << "flag 1";
     return os;
 }
 
 std::istream& operator>>(std::istream& is, Car& car) {
+    if(is.peek() != '['){
+        return is;
+    }
+
+    car = Car();
+
     char ch;
     is >> ch >> car.ID;
     is.ignore(2);
     std::getline(is, car.make, ',');
     is.ignore(1);
     std::getline(is, car.model, ',');
+    is.ignore(1);
     is >> car.year;
     is.ignore(2);
     is >> car.seats;

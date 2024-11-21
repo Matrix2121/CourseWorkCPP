@@ -14,7 +14,7 @@ class FileManager {
         static bool initializeFiles();
         static void loadData();
 
-        static void saveCarToFile(const Car& car);
+        static void saveCarToFile(const Car&);
         static void saveRouteToFile(const Route&);
         static void savePairToFile(const Car&, const Route&);
 
