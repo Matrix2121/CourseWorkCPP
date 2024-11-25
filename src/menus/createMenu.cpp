@@ -98,7 +98,7 @@ void CreateMenu::createRoute(){
         std::cout << std::endl << "Enter route's length in km (in numbers, up to 999.9): ";
         std::cin >> createObjectInput;
 
-        if(Regex::seatsRegex(createObjectInput)){
+        if(Regex::lengthRegex(createObjectInput)){
             r1.setLength(stod(createObjectInput));
             break;
         } else if (createObjectInput == "STOP"){
@@ -112,7 +112,7 @@ void CreateMenu::createRoute(){
         std::cout << std::endl << "Enter route's repetitions (in numbers, up to 999): ";
         std::cin >> createObjectInput;
 
-        if(Regex::seatsRegex(createObjectInput)){
+        if(Regex::repetitionsRegex(createObjectInput)){
             r1.setRepetitions(stoi(createObjectInput));
             break;
         } else if (createObjectInput == "STOP"){

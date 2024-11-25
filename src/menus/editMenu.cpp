@@ -103,8 +103,8 @@ void EditMenu::editRoute(){
     Route oldRoute = Route();
     Route newRoute = Route();
 
-    std::cout << "Which car do you want to edit (by ID): ";
-    DisplayMenu::displayAllCars();
+    std::cout << "Which route do you want to edit (by ID): ";
+    DisplayMenu::displayAllRoutes();
     std::cin >> routeID;
     oldRoute = Manager::findRoute(routeID);
     newRoute = oldRoute;
