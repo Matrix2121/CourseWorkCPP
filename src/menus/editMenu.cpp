@@ -150,7 +150,7 @@ void EditMenu::editRoute(){
                 }
             }
 
-        } else if(editMenuInput == "seats"){
+        } else if(editMenuInput == "repetitions"){
             while(true){
                 std::cout << "Enter new repetitions (in numbers, up to 999): ";
                 std::cin >> editMenuInput;

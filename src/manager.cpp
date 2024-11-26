@@ -158,7 +158,6 @@ void Manager::editCar(Car oldCar, Car newCar){
                 r1 = pair.second;
                 storageAllPairs.erase(pair.first);
                 storageAllPairs.insert({newCar, r1});
-                break;
             }
         }
     }
