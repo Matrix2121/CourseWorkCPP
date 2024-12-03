@@ -1,6 +1,14 @@
 #include "mainMenu.h"
 
 void MainMenu::mainMenu(){
+
+    if(!FileManager::initializeFiles()){
+        std::cout << "File initialization error!" << std::endl;
+        return;
+    }
+    
+    FileManager::loadData();
+
     int mainMenuInput;
 
     while(true){
