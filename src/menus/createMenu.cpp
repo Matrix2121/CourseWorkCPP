@@ -1,19 +1,35 @@
 #include "createmenu.h"
 
-void CreateMenu::createCar(){
+void CreateMenu::createVehicle(){
     std::string createObjectInput;
-    Car c1 = Car();
+    Vehicle c1 = Vehicle();
 
-    std::cout << "Enter the car's make: ";
-    std::cin >> createObjectInput;
-    c1.setMake(createObjectInput);
+    while(true){
+        std::cout << "Enter the vehicle's make: ";
+        std::cin >> createObjectInput;
+        
+        if (createObjectInput == "STOP"){
+            return;
+        } else {
+            c1.setMake(createObjectInput);
+            break;
+        }
+    }
 
-    std::cout << "Enter the car's model: ";
-    std::cin >> createObjectInput;
-    c1.setModel(createObjectInput);
+    while(true){
+        std::cout << "Enter the vehicle's model: ";
+        std::cin >> createObjectInput;
+
+        if (createObjectInput == "STOP"){
+            return;
+        } else {
+            c1.setModel(createObjectInput);
+            break;
+        }
+    }
     
     while(true){
-        std::cout << "Enter the car's year (in numbers, between 1886 and 2024): ";
+        std::cout << "Enter the vehicle's year (in numbers, between 1886 and 2024): ";
         std::cin >> createObjectInput;
 
         if(Regex::yearRegex(createObjectInput)){
@@ -22,12 +38,12 @@ void CreateMenu::createCar(){
         } else if (createObjectInput == "STOP"){
             return;
         } else {
-            std::cout << "Invalid input! Try again or type \"STOP\" to abort inputting!";
+            std::cout << "Invalid input! Try again or type \"STOP\" to abort the creation!!";
         }
     }
     
     while(true){
-        std::cout << "Enter the car's seats (in numbers, up to 99): ";
+        std::cout << "Enter the vehicle's seats (in numbers, up to 99): ";
         std::cin >> createObjectInput;
 
         if(Regex::seatsRegex(createObjectInput)){
@@ -36,12 +52,12 @@ void CreateMenu::createCar(){
         } else if (createObjectInput == "STOP"){
             return;
         } else {
-            std::cout << "Invalid input! Try again or type \"STOP\" to abort inputting!";
+            std::cout << "Invalid input! Try again or type \"STOP\" to abort the creation!!";
         }
     }
 
     while(true){
-        std::cout << "Enter the car's load capacity in kg (in numbers, up to 49999): ";
+        std::cout << "Enter the vehicle's load capacity in kg (in numbers, up to 49999): ";
         std::cin >> createObjectInput;
 
         if(Regex::loadCapacityRegex(createObjectInput)){
@@ -50,12 +66,12 @@ void CreateMenu::createCar(){
         } else if (createObjectInput == "STOP"){
             return;
         } else {
-            std::cout << "Invalid input! Try again or type \"STOP\" to abort inputting!\n";
+            std::cout << "Invalid input! Try again or type \"STOP\" to abort the creation!!\n";
         }
     }
     
     while(true){
-        std::cout << "Enter the car's fuel consumption (l/100km) (in numbers, up to 99.9): ";
+        std::cout << "Enter the vehicle's fuel consumption (l/100km) (in numbers, up to 99.9): ";
         std::cin >> createObjectInput;
 
         if(Regex::fuelConsumptionRegex(createObjectInput)){
@@ -64,20 +80,20 @@ void CreateMenu::createCar(){
         } else if (createObjectInput == "STOP"){
             return;
         } else {
-            std::cout << "Invalid input! Try again or type \"STOP\" to abort inputting!";
+            std::cout << "Invalid input! Try again or type \"STOP\" to abort the creation!!";
         }
     }
 
     std::cout << std::flush;
     c1.IDDeclaration();
-    Manager::addCar(c1);
+    Manager::addVehicle(c1);
 }
 
 void CreateMenu::createRoute(){
     std::string createObjectInput;
     Route r1 = Route();
 
-    std::cout << "Add connection points or write \"STOP\" to continue\n";
+    std::cout << "Add connection points, write \"CONTINUE\" to continue or write \"STOP\" to abort the creation\n";
     int counter;
 
     while(true){
@@ -86,8 +102,10 @@ void CreateMenu::createRoute(){
         std::cout<< "Connection point #" << counter << ": ";
         std::cin >> createObjectInput;
 
-        if(createObjectInput == "STOP"){
+        if(createObjectInput == "CONTINUE"){
             break;
+        } else if (createObjectInput == "STOP"){
+            return;
         } else {
             r1.addConnectingPoints(createObjectInput);
         }
@@ -104,7 +122,7 @@ void CreateMenu::createRoute(){
         } else if (createObjectInput == "STOP"){
             return;
         } else {
-            std::cout << "Invalid input! Try again or type \"STOP\" to abort inputting!";
+            std::cout << "Invalid input! Try again or type \"STOP\" to abort the creation!";
         }
     }
 
@@ -118,7 +136,7 @@ void CreateMenu::createRoute(){
         } else if (createObjectInput == "STOP"){
             return;
         } else {
-            std::cout << "Invalid input! Try again or type \"STOP\" to abort inputting!";
+            std::cout << "Invalid input! Try again or type \"STOP\" to abort the creation!";
         }
     }
 

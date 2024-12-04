@@ -4,7 +4,7 @@ int Route::counter = 1;
 
 Route::Route(){
     this->ID = -1;
-    // this->carsOnRoute = 0;
+    // this->vehiclesOnRoute = 0;
 }
 
 Route::Route(std::vector<std::string> connectingPoints, double length, int repetitions){
@@ -12,7 +12,7 @@ Route::Route(std::vector<std::string> connectingPoints, double length, int repet
     this->connectingPoints = connectingPoints;
     this->length = length;
     this->repetitions  = repetitions;
-    // this->carsOnRoute = 0;
+    // this->vehiclesOnRoute = 0;
     Route::counter++;
 }
 
@@ -61,14 +61,14 @@ int Route::getRepetitions(){
     return this->repetitions;
 }
 
-// void Route::addCarToRoute(){
-//     ++carsOnRoute;
+// void Route::addVehicleToRoute(){
+//     ++vehiclesOnRoute;
 // }
-// void Route::removeCarFromRoute(){
-//     --carsOnRoute;
+// void Route::removeVehicleFromRoute(){
+//     --vehiclesOnRoute;
 // }
-// int Route::getCarsOnRoute(){
-//     return this->carsOnRoute;
+// int Route::getVehiclesOnRoute(){
+//     return this->vehiclesOnRoute;
 // }
 
 bool Route::operator<(const Route& other) const {
@@ -88,7 +88,7 @@ std::ostream& operator<<(std::ostream& os, const Route& route){
         os << route.connectingPoints.back();
     }
 
-    os << "}, " << route.length << " km, " << route.repetitions << " repetitions]"/* << route.carsOnRoute << " car(s)]"*/;
+    os << "}, " << route.length << " km, " << route.repetitions << " repetitions]"/* << route.vehiclesOnRoute << " vehicle(s)]"*/;
 
     return os;
 }
@@ -122,7 +122,7 @@ std::istream& operator>>(std::istream& is, Route& route) {
     is.ignore(5);
     is >> route.repetitions;
     is.ignore(13);
-    // is >> route.carsOnRoute;
+    // is >> route.vehiclesOnRoute;
     // is.ignore(8);
     return is;
 }

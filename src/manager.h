@@ -2,44 +2,44 @@
 #include <iostream>
 #include <map>
 #include <set>
-#include "core/car.h"
+#include "core/vehicle.h"
 #include "core/route.h"
 #include "regex/regex.h"
 #include "fileManager.h"
 
 class Manager{
     private:
-        static std::vector<Car> storageAllCars;
+        static std::vector<Vehicle> storageAllVehicles;
         static std::set<Route> storageAllRoutes;
-        static std::map<Car, Route> storageAllPairs;
+        static std::map<Vehicle, Route> storageAllPairs;
         
     public:
-        static void displayAllCars();
+        static void displayAllVehicles();
         static void displayAllRoutes();
         static void displayAllPairs();
 
-        static void addCar(Car);
+        static void addVehicle(Vehicle);
         static void addRoute(Route);
 
-        static Car findCar(int);
+        static Vehicle findVehicle(int);
         static Route findRoute(int);
 
-        static void takeCar(int);
-        static void untakeCar(int);
-        // static void addCarToRoute(int);
-        // static void removeCarFromRoute(int);
+        static void takeVehicle(int);
+        static void untakeVehicle(int);
+        // static void addVehicleToRoute(int);
+        // static void removeVehicleFromRoute(int);
 
-        static void assignPair(Car, Route);
+        static void assignPair(Vehicle, Route);
 
         static void unassignPair(int);
 
-        static void editCar(Car, Car);
+        static void editVehicle(Vehicle, Vehicle);
         static void editRoute(Route, Route);
 
-        static void deleteCar(int);
+        static void deleteVehicle(int);
         static void deleteRoute(int);
 
-        static void saveCarsToFile();
+        static void saveVehiclesToFile();
         static void saveRoutesToFile();
         static void savePairsToFile();
 };

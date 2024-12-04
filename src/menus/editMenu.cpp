@@ -1,16 +1,16 @@
 #include "editMenu.h"
 
-void EditMenu::editCar(){
-    int carID;
+void EditMenu::editVehicle(){
+    int vehicleID;
     std::string editMenuInput;
-    Car oldCar = Car();
-    Car newCar = Car();
+    Vehicle oldVehicle = Vehicle();
+    Vehicle newVehicle = Vehicle();
 
-    std::cout << "Which car do you want to edit (by ID): ";
-    DisplayMenu::displayAllCars();
-    std::cin >> carID;
-    oldCar = Manager::findCar(carID);
-    newCar = oldCar;
+    std::cout << "Which vehicle do you want to edit (by ID): ";
+    DisplayMenu::displayAllVehicles();
+    std::cin >> vehicleID;
+    oldVehicle = Manager::findVehicle(vehicleID);
+    newVehicle = oldVehicle;
 
     
     while(true){
@@ -22,12 +22,12 @@ void EditMenu::editCar(){
         } else if(editMenuInput == "make"){
             std::cout << "Enter new make: ";
             std::cin >> editMenuInput;
-            newCar.setMake(editMenuInput);
+            newVehicle.setMake(editMenuInput);
 
         } else if(editMenuInput == "model"){
             std::cout << "Enter new model: ";
             std::cin >> editMenuInput;
-            newCar.setModel(editMenuInput);
+            newVehicle.setModel(editMenuInput);
 
         } else if(editMenuInput == "year"){
             while(true){
@@ -35,7 +35,7 @@ void EditMenu::editCar(){
                 std::cin >> editMenuInput;
 
                 if(Regex::yearRegex(editMenuInput)){
-                    newCar.setYear(stoi(editMenuInput));
+                    newVehicle.setYear(stoi(editMenuInput));
                     break;
                 } else if (editMenuInput == "STOP"){
                     return;
@@ -50,7 +50,7 @@ void EditMenu::editCar(){
                 std::cin >> editMenuInput;
 
                 if(Regex::seatsRegex(editMenuInput)){
-                    newCar.setSeats(stoi(editMenuInput));
+                    newVehicle.setSeats(stoi(editMenuInput));
                     break;
                 } else if (editMenuInput == "STOP"){
                     return;
@@ -65,7 +65,7 @@ void EditMenu::editCar(){
                 std::cin >> editMenuInput;
 
                 if(Regex::loadCapacityRegex(editMenuInput)){
-                    newCar.setLoadCapacity(stoi(editMenuInput));
+                    newVehicle.setLoadCapacity(stoi(editMenuInput));
                     break;
                 } else if (editMenuInput == "STOP"){
                     return;
@@ -80,7 +80,7 @@ void EditMenu::editCar(){
                 std::cin >> editMenuInput;
 
                 if(Regex::fuelConsumptionRegex(editMenuInput)){
-                    newCar.setFuelConsumption(stod(editMenuInput));
+                    newVehicle.setFuelConsumption(stod(editMenuInput));
                     break;
                 } else if (editMenuInput == "STOP"){
                     return;
@@ -94,7 +94,7 @@ void EditMenu::editCar(){
         }
     }
 
-    Manager::editCar(oldCar, newCar);
+    Manager::editVehicle(oldVehicle, newVehicle);
 }
 
 void EditMenu::editRoute(){

@@ -13,7 +13,7 @@ void MainMenu::mainMenu(){
 
     while(true){
 
-        std::cout << "\nChoose one of the following (1/2/3/4/5/6/7):\n1. View information\n2. Create new...\n3. Assign new pair\n4. Unassign a pair\n5. Edit...\n6. Delete...\n7. Exit" << std::endl;
+        std::cout << "\nChoose one of the following (1/2/3/4/5/6/7):\n1. Display information\n2. Create new...\n3. Assign new pair\n4. Unassign a pair\n5. Edit...\n6. Delete...\n7. Exit" << std::endl;
 
         std::cin >> mainMenuInput;
 
@@ -58,7 +58,7 @@ void MainMenu::displayMenu(){
 
     while(true){
 
-        std::cout << "\nChoose one of the following (1/2/3/4):\n1. Display all cars\n2. Display all routes\n3. Display all pairs\n4. Return to main menu" << std::endl;
+        std::cout << "\nChoose one of the following (1/2/3/4):\n1. Display all vehicles\n2. Display all routes\n3. Display all pairs\n4. Return to main menu" << std::endl;
 
         std::cin >> displayMenuInput;
 
@@ -71,7 +71,7 @@ void MainMenu::displayMenu(){
 
         switch (displayMenuInput){
             case 1: 
-                DisplayMenu::displayAllCars();
+                DisplayMenu::displayAllVehicles();
                 break;
             case 2:
                 DisplayMenu::displayAllRoutes();
@@ -95,7 +95,7 @@ void MainMenu::createMenu(){
     int createMenuInput;
     
     while(true){
-        std::cout << "\nChoose what you want to create (1/2):\n1. New Car\n2. New Route\n3. Return to main main menu" << std::endl;
+        std::cout << "\nChoose what you want to create (1/2/3):\n1. New Vehicle\n2. New Route\n3. Return to main menu" << std::endl;
         std::cin >> createMenuInput;
 
         if (std::cin.fail()) {
@@ -107,7 +107,7 @@ void MainMenu::createMenu(){
 
         switch (createMenuInput){
             case 1:
-                CreateMenu::createCar();
+                CreateMenu::createVehicle();
                 break;
             case 2:
                 CreateMenu::createRoute();
@@ -132,7 +132,7 @@ void MainMenu::editMenu(){
     int editMenuInput;
     
     while(true){
-        std::cout << "\nChoose what you want to create (1/2/3):\n1. Edit car\n2. Edit Route\n3. Return to main main menu" << std::endl;
+        std::cout << "\nChoose what you want to create (1/2/3):\n1. Edit Vehicle\n2. Edit Route\n3. Return to main menu" << std::endl;
         std::cin >> editMenuInput;
 
         if (std::cin.fail()) {
@@ -144,7 +144,7 @@ void MainMenu::editMenu(){
 
         switch (editMenuInput){
             case 1:
-                EditMenu::editCar();
+                EditMenu::editVehicle();
                 break;
             case 2:
                 EditMenu::editRoute();
@@ -161,7 +161,7 @@ void MainMenu::deleteMenu(){
     int deleteMenuInput;
     
     while(true){
-        std::cout << "\nChoose what you want to create (1/2/3):\n1. Delete car\n2. Delete Route\n3. Return to main main menu" << std::endl;
+        std::cout << "\nChoose what you want to create (1/2/3):\n1. Delete Vehicle\n2. Delete Route\n3. Return to main main menu" << std::endl;
         std::cin >> deleteMenuInput;
 
         if (std::cin.fail()) {
@@ -173,7 +173,7 @@ void MainMenu::deleteMenu(){
 
         switch (deleteMenuInput){
             case 1:
-                DeleteMenu::deleteCar();
+                DeleteMenu::deleteVehicle();
                 break;
             case 2:
                 DeleteMenu::deleteRoute();
