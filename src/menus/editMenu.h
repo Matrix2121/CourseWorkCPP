@@ -4,6 +4,6 @@
 
 class EditMenu{
     public:
-        static void editCar();
+        static void editVehicle();
         static void editRoute();
 };

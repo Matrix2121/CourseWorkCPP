@@ -1,14 +1,14 @@
 #include "assignMenu.h"
 
 void AssignMenu::assign(){
-    int carID, routeID;
+    int vehicleID, routeID;
     std::string assignInput;
-    Car c1;
-    Route r1;
+    Vehicle c1 = Vehicle();
+    Route r1 = Route();
 
-    DisplayMenu::displayAllCars();
+    DisplayMenu::displayAllVehicles();
     while(true){
-        std::cout << "\nSelect which car you want to assign (by ID): ";
+        std::cout << "\nSelect which vehicle you want to assign (by ID): ";
         std::cin >> assignInput;
 
         if(assignInput == "STOP"){
@@ -18,10 +18,10 @@ void AssignMenu::assign(){
             continue;
         }
 
-        c1 = Manager::findCar(stoi(assignInput));
+        c1 = Manager::findVehicle(stoi(assignInput));
 
         if(c1.getStatus() == "taken"){
-            std::cout << "This car is already assigned on a route! Chose another or abort assignment!";
+            std::cout << "This vehicle is already assigned on a route! Chose another or abort assignment!";
             continue;
         }
     
@@ -29,7 +29,7 @@ void AssignMenu::assign(){
             std::cout << "Invalid input! Try again ot type \"STOP\" to return to main menu!\n";
             continue;
         } else {
-            carID = stoi(assignInput);
+            vehicleID = stoi(assignInput);
             break;
         }
     }
@@ -37,7 +37,7 @@ void AssignMenu::assign(){
     
     DisplayMenu::displayAllRoutes();
     while(true){
-        std::cout << "\nSelect which route you want to assign to that car (by ID): ";
+        std::cout << "\nSelect which route you want to assign to that vehicle (by ID): ";
         std::cin >> assignInput;
 
         if(assignInput == "STOP"){
@@ -66,8 +66,8 @@ void AssignMenu::assign(){
         std::cin >> assignInput;
         if(assignInput == "y"){
             Manager::assignPair(c1, r1);
-            Manager::takeCar(carID);
-            Manager::addCarToRoute(routeID);
+            Manager::takeVehicle(vehicleID);
+            //Manager::addVehicleToRoute(routeID);
             std::cout << std::flush;
             return;
         } else if(assignInput == "n"){

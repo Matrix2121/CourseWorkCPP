@@ -1,11 +1,11 @@
 #include "unassignMenu.h"
 
 void UnassignMenu::unassign(){
-    int carID;
-    Manager::displayAllCars();
+    int vehicleID;
+    Manager::displayAllVehicles();
 
-    std::cout << "Select the ID of the car you want to unassign: ";
-    std::cin >> carID;
+    std::cout << "Select the ID of the vehicle you want to unassign: ";
+    std::cin >> vehicleID;
 
-    Manager::unassignPair(carID);
+    Manager::unassignPair(vehicleID);
 }

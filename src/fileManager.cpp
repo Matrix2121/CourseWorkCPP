@@ -1,17 +1,17 @@
 #include "FileManager.h"
 
-std::fstream FileManager::carsFile;
+std::fstream FileManager::vehiclesFile;
 std::fstream FileManager::routesFile;
 std::fstream FileManager::pairsFile;
 
 bool FileManager::initializeFiles() {
-    if (!std::filesystem::exists("data/cars.txt")) {
-        carsFile.open("data/cars.txt", std::ios::out);
-        carsFile.close();
+    if (!std::filesystem::exists("data/vehicles.txt")) {
+        vehiclesFile.open("data/vehicles.txt", std::ios::out);
+        vehiclesFile.close();
     }
-    carsFile.open("data/cars.txt", std::ios::in);
-    if (!carsFile.is_open()) {
-        std::cerr << "Error opening cars.txt" << std::endl;
+    vehiclesFile.open("data/vehicles.txt", std::ios::in);
+    if (!vehiclesFile.is_open()) {
+        std::cerr << "Error opening vehicles.txt" << std::endl;
         return false;
     }
 
@@ -40,15 +40,15 @@ bool FileManager::initializeFiles() {
 }
 
 void FileManager::loadData() {
-    std::string delimiter;
+    char delimiter;
     int counter;
-    Car car;
+    Vehicle vehicle;
     Route route;
 
-    int carID = 0, routeID = 0;
+    int vehicleID = 0, routeID = 0;
 
-    carsFile.clear();
-    carsFile.seekg(0);
+    vehiclesFile.clear();
+    vehiclesFile.seekg(0);
 
     routesFile.clear();
     routesFile.seekg(0);
@@ -56,26 +56,26 @@ void FileManager::loadData() {
     pairsFile.clear();
     pairsFile.seekg(0);
 
-    if (std::filesystem::file_size("data/cars.txt") > 0) {
-        while (carsFile >> car) {
-            if (carsFile.eof()) {
+    if (std::filesystem::file_size("data/vehicles.txt") > 0) {
+        while (vehiclesFile >> vehicle) {
+            if (vehiclesFile.eof()) {
                 break;
             }
-            if (!car.isEmpty()) {
-                Manager::addCar(car);
-                if(carID < car.getID()){
-                    carID = car.getID();
+            if (!vehicle.isEmpty()) {
+                Manager::addVehicle(vehicle);
+                if(vehicleID < vehicle.getID()){
+                    vehicleID = vehicle.getID();
                 }
             } else {
-                std::cout << "Empty car encountered!" << std::endl;
+                std::cout << "Empty vehicle encountered!" << std::endl;
                 break;
             }
         }
     } else {
-        std::cout << "cars.txt is empty." << std::endl;
+        std::cout << "vehicles.txt is empty." << std::endl;
     }
 
-    Car::setCounter(carID + 1);
+    Vehicle::setCounter(vehicleID + 1);
 
     if (std::filesystem::file_size("data/routes.txt") > 0) {
         while (routesFile >> route) {
@@ -99,40 +99,40 @@ void FileManager::loadData() {
     Route::setCounter(routeID + 1);
 
     if (std::filesystem::file_size("data/pairs.txt") > 0) {
-        while (pairsFile >> car >> delimiter >> route) {
+        while (pairsFile >> vehicle >> delimiter >> route) {
             if (pairsFile.eof()) {
                 break;
             }
-            Manager::assignPair(car, route);
+            Manager::assignPair(vehicle, route);
         }
     } else {
         std::cout << "pairs.txt is empty." << std::endl;
     }
 
-    carsFile.close();
+    vehiclesFile.close();
     routesFile.close();
     pairsFile.close();
 }
 
-void FileManager::saveCarToFile(const Car& car){
-    carsFile << car;
+void FileManager::saveVehicleToFile(const Vehicle& vehicle){
+    vehiclesFile << vehicle;
 }
 void FileManager::saveRouteToFile(const Route& route){
     routesFile << route;
 }
-void FileManager::savePairToFile(const Car& car, const Route& route){
+void FileManager::savePairToFile(const Vehicle& vehicle, const Route& route){
     char delimiter = '-';
-    pairsFile << car << delimiter << route;
+    pairsFile << vehicle << delimiter << route;
 }
 
 void FileManager::closeFiles() {
-    carsFile.open("data/cars.txt", std::ios::out | std::ios::trunc);
+    vehiclesFile.open("data/vehicles.txt", std::ios::out | std::ios::trunc);
     routesFile.open("data/routes.txt", std::ios::out | std::ios::trunc);
     pairsFile.open("data/pairs.txt", std::ios::out | std::ios::trunc);
-    Manager::saveCarsToFile();
+    Manager::saveVehiclesToFile();
     Manager::saveRoutesToFile();
     Manager::savePairsToFile();
-    carsFile.close();
+    vehiclesFile.close();
     routesFile.close();
     pairsFile.close();
 }

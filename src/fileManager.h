@@ -5,8 +5,8 @@
 #include "manager.h"
 
 class FileManager {
-    public:
-        static std::fstream carsFile;
+    private:
+        static std::fstream vehiclesFile;
         static std::fstream routesFile;
         static std::fstream pairsFile;
 
@@ -14,9 +14,9 @@ class FileManager {
         static bool initializeFiles();
         static void loadData();
 
-        static void saveCarToFile(const Car&);
+        static void saveVehicleToFile(const Vehicle&);
         static void saveRouteToFile(const Route&);
-        static void savePairToFile(const Car&, const Route&);
+        static void savePairToFile(const Vehicle&, const Route&);
 
         static void closeFiles();
 };

@@ -3,6 +3,6 @@
 
 class CreateMenu{
     public:
-        static void createCar();
+        static void createVehicle();
         static void createRoute();
 };

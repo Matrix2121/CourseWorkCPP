@@ -3,6 +3,6 @@
 
 class DeleteMenu {
     public:
-        static void deleteCar();
+        static void deleteVehicle();
         static void deleteRoute();
 };

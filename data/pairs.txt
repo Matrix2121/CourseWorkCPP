@@ -1,0 +1,1 @@
+[2, Audi, A3, 2002, 5 seats, 1200 kg, 6 l/100km, taken]-[1, {su, tu}, 25 km, 80 repetitions][4, Tesla, S, 2022, 5 seats, 2500 kg, 0 l/100km, taken]-[2, {lozenec, mladost}, 50 km, 20 repetitions][6, Honda, Civic, 2001, 5 seats, 1300 kg, 7 l/100km, taken]-[3, {sofiaRingMall, Mladost, unss}, 30 km, 50 repetitions]

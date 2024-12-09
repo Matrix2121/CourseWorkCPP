@@ -1,13 +1,13 @@
 #include "deleteMenu.h"
 
-void DeleteMenu::deleteCar(){
-    int carID;
+void DeleteMenu::deleteVehicle(){
+    int vehicleID;
     
-    Manager::displayAllCars();
-    std::cout << "Enter the car's ID you'd like to delete: ";
-    std::cin >> carID;
+    Manager::displayAllVehicles();
+    std::cout << "Enter the vehicle's ID you'd like to delete: ";
+    std::cin >> vehicleID;
 
-    Manager::deleteCar(carID);
+    Manager::deleteVehicle(vehicleID);
 }
 
 void DeleteMenu::deleteRoute(){

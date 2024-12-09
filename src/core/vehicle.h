@@ -4,7 +4,7 @@
 #include <iomanip>
 #include <iostream>
 
-class Car{
+class Vehicle{
     private: 
         static int counter;
         int ID;
@@ -17,8 +17,8 @@ class Car{
         std::string status;
     
     public:
-        Car();
-        Car(std::string, std::string, int, int, int, double);
+        Vehicle();
+        Vehicle(std::string, std::string, int, int, int, double);
 
         static void setCounter(int);
         static int getCounter();
@@ -50,11 +50,11 @@ class Car{
         void setStatusUntaken();
         std::string getStatus();
 
-        bool operator<(const Car&) const;
-        bool operator==(const Car&) const;
+        bool operator<(const Vehicle&) const;
+        bool operator==(const Vehicle&) const;
 
-        friend std::ostream& operator<<(std::ostream&, const Car&);
-        friend std::istream& operator>>(std::istream&, Car&);
+        friend std::ostream& operator<<(std::ostream&, const Vehicle&);
+        friend std::istream& operator>>(std::istream&, Vehicle&);
 
         bool isEmpty() const;
 };
