@@ -21,7 +21,7 @@ bool Regex::yearRegex(std::string str){
 }
 
 bool Regex::seatsRegex(std::string str){
-    std::regex seatsRegex(R"(\b\d{1,2}\b)");
+    std::regex seatsRegex(R"(\b[1-9]\d{0,1}\b)");
 
     if (std::regex_match(str, seatsRegex)) {
         return 1;
@@ -31,7 +31,7 @@ bool Regex::seatsRegex(std::string str){
 }
 
 bool Regex::loadCapacityRegex(std::string str){
-    std::regex loadCapacityRegex(R"(\b([0-4]?\d{1,4})\b)");
+    std::regex loadCapacityRegex(R"(\b([1-4]?\d{0,4})\b)");
 
     if (std::regex_match(str, loadCapacityRegex)) {
         return 1;
@@ -51,7 +51,7 @@ bool Regex::fuelConsumptionRegex(std::string str){
 }
 
 bool Regex::lengthRegex(std::string str){
-    std::regex lengthRegex(R"(\b\d{1,3}(\.\d+)?\b)");
+    std::regex lengthRegex(R"(\b(?:[1-9][0-9]{0,3}|10000)(?:\.\d+)?\b)");
 
     if (std::regex_match(str, lengthRegex)) {
         return 1;
@@ -61,7 +61,7 @@ bool Regex::lengthRegex(std::string str){
 }
 
 bool Regex::repetitionsRegex(std::string str){
-    std::regex repetitionsRegex(R"(\b\d{1,3}\b)");
+    std::regex repetitionsRegex(R"(\b\[1-9]d{0,2}\b)");
 
     if (std::regex_match(str, repetitionsRegex)) {
         return 1;

@@ -113,7 +113,7 @@ void CreateMenu::createRoute(){
     }
 
     while(true){
-        std::cout << std::endl << "Enter route's length in km (in numbers, up to 999.9): ";
+        std::cout << std::endl << "Enter route's length in km (in numbers, up to 10000): ";
         std::cin >> createObjectInput;
 
         if(Regex::lengthRegex(createObjectInput)){

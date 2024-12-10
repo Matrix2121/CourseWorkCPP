@@ -8,10 +8,17 @@ void EditMenu::editVehicle(){
 
     std::cout << "Which vehicle do you want to edit (by ID): ";
     DisplayMenu::displayAllVehicles();
-    std::cin >> vehicleID;
-    oldVehicle = Manager::findVehicle(vehicleID);
-    newVehicle = oldVehicle;
-
+    
+    while(true){
+        std::cin >> vehicleID;
+        oldVehicle = Manager::findVehicle(vehicleID);
+        if(oldVehicle == Vehicle()){
+            std::cout << "Invalid input! Try again or type \"STOP\" to abort inputting!";
+        } else if (!(oldVehicle == Vehicle())){
+            newVehicle = oldVehicle;
+            break;
+        }
+    }
     
     while(true){
         std::cout << "What do you want to edit (make/model/year/seats/loadCapacity/fuelConsumption) or type \"STOP\" to finish editing: ";
@@ -105,10 +112,17 @@ void EditMenu::editRoute(){
 
     std::cout << "Which route do you want to edit (by ID): ";
     DisplayMenu::displayAllRoutes();
-    std::cin >> routeID;
-    oldRoute = Manager::findRoute(routeID);
-    newRoute = oldRoute;
 
+    while(true){
+        std::cin >> routeID;
+        oldRoute = Manager::findRoute(routeID);
+        if(oldRoute == Route()){
+            std::cout << "Invalid input! Try again or type \"STOP\" to abort inputting!";
+        } else if (!(oldRoute == Route())){
+            newRoute = oldRoute;
+            break;
+        }
+    }
     
     while(true){
         std::cout << "What do you want to edit (connectionPoints/lenght/repetitions) or type \"STOP\" to finish editing: ";

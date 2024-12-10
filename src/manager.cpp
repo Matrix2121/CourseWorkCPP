@@ -151,7 +151,7 @@ void Manager::unassignPair(int vehicleID){
 
 
 void Manager::editVehicle(Vehicle oldVehicle, Vehicle newVehicle){
-    if(oldVehicle.getStatus() == "Taken"){
+    if(oldVehicle.getStatus() == "taken"){
         Route r1 = Route();
         for(auto& pair : storageAllPairs){
             if(pair.first == oldVehicle){

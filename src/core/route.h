@@ -40,7 +40,7 @@ class Route{
         // void removeVehicleFromRoute();
         // int getVehiclesOnRoute();
 
-        bool operator==(Route&) const;
+        bool operator==(const Route&) const;
         bool operator<(const Route&) const;
 
         friend std::ostream& operator<<(std::ostream&, const Route&);
