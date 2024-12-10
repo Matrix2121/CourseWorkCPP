@@ -43,7 +43,7 @@ void CreateMenu::createVehicle(){
     }
     
     while(true){
-        std::cout << "Enter the vehicle's seats (in numbers, up to 99): ";
+        std::cout << "Enter the vehicle's seats (in numbers, up to 100): ";
         std::cin >> createObjectInput;
 
         if(Regex::seatsRegex(createObjectInput)){
@@ -57,7 +57,7 @@ void CreateMenu::createVehicle(){
     }
 
     while(true){
-        std::cout << "Enter the vehicle's load capacity in kg (in numbers, up to 49999): ";
+        std::cout << "Enter the vehicle's load capacity in kg (in numbers, up to 50000): ";
         std::cin >> createObjectInput;
 
         if(Regex::loadCapacityRegex(createObjectInput)){
@@ -71,7 +71,7 @@ void CreateMenu::createVehicle(){
     }
     
     while(true){
-        std::cout << "Enter the vehicle's fuel consumption (l/100km) (in numbers, up to 99.9): ";
+        std::cout << "Enter the vehicle's fuel consumption (l/100km) (in numbers, up to 100): ";
         std::cin >> createObjectInput;
 
         if(Regex::fuelConsumptionRegex(createObjectInput)){
@@ -127,7 +127,7 @@ void CreateMenu::createRoute(){
     }
 
     while(true){
-        std::cout << std::endl << "Enter route's repetitions (in numbers, up to 999): ";
+        std::cout << std::endl << "Enter route's repetitions (in numbers, up to 1000): ";
         std::cin >> createObjectInput;
 
         if(Regex::repetitionsRegex(createObjectInput)){

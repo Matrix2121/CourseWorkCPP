@@ -53,7 +53,7 @@ void EditMenu::editVehicle(){
 
         } else if(editMenuInput == "seats"){
             while(true){
-                std::cout << "Enter new seats: ";
+                std::cout << "Enter new seats(in numbers, up to 100): ";
                 std::cin >> editMenuInput;
 
                 if(Regex::seatsRegex(editMenuInput)){
@@ -68,7 +68,7 @@ void EditMenu::editVehicle(){
 
         } else if(editMenuInput == "loadCapacity"){
             while(true){
-                std::cout << "Enter new load capacity: ";
+                std::cout << "Enter new load capacity in kg (in numbers, up to 50000): ";
                 std::cin >> editMenuInput;
 
                 if(Regex::loadCapacityRegex(editMenuInput)){
@@ -83,7 +83,7 @@ void EditMenu::editVehicle(){
 
         } else if(editMenuInput == "fuelConsumption"){
             while(true){
-                std::cout << "Enter new fuel consumption: ";
+                std::cout << "Enter new fuel consumption (l/100km) (in numbers, up to 100): ";
                 std::cin >> editMenuInput;
 
                 if(Regex::fuelConsumptionRegex(editMenuInput)){
@@ -151,7 +151,7 @@ void EditMenu::editRoute(){
 
         } else if(editMenuInput == "lenght"){
             while(true){
-                std::cout << "Enter new length in km (in numbers, up to 999.9): ";
+                std::cout << "Enter new length in km (in numbers, up to 10000): ";
                 std::cin >> editMenuInput;
 
                 if(Regex::lengthRegex(editMenuInput)){
@@ -166,7 +166,7 @@ void EditMenu::editRoute(){
 
         } else if(editMenuInput == "repetitions"){
             while(true){
-                std::cout << "Enter new repetitions (in numbers, up to 999): ";
+                std::cout << "Enter new repetitions (in numbers, up to 1000): ";
                 std::cin >> editMenuInput;
 
                 if(Regex::repetitionsRegex(editMenuInput)){

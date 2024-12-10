@@ -1,1 +1,1 @@
-[1, {su, tu}, 25 km, 80 repetitions][2, {lozenec, mladost}, 50 km, 20 repetitions][3, {sofiaRingMall, Mladost, unss}, 35 km, 50 repetitions][4, {sofia, pirdop, karlovo}, 150 km, 2 repetitions][5, {du, su, tu, novbulgarski}, 99 km, 1 repetitions]
+[1, {su, tu}, 80 km, 100 repetitions][2, {lozenec, mladost}, 50 km, 20 repetitions][3, {sofiaRingMall, Mladost, unss}, 100 km, 50 repetitions][4, {sofia, pirdop, karlovo}, 150 km, 2 repetitions][5, {du, su, tu, novbulgarski}, 99 km, 30 repetitions]
